@@ -1,7 +1,35 @@
+
+<div class = "container">
+<h2>Master Karyawan</h2>
+<div class = "container-table">
+
+<div class = "container-title-footer">
+<p>List Karyawan</p>
+</div>
+
+
+<div class = "container-title-footer">
+</div>
+
+</div>
+</div>
+
+
 <table>
-	<tr>
-		<th class = "header">
+	<tr class = "tr-header">
+		<th class = "header" style="width:50px">
       <div>
+        	No
+      </div>
+		
+			<div class ="header-action" >
+				<mat-icon>arrow_drop_up</mat-icon>
+				<mat-icon>arrow_drop_down</mat-icon>
+			</div>
+
+		</th>
+		<th class = "header" style="flex:2">
+        <div>
         	No
       </div>
 		
@@ -9,30 +37,38 @@
 				<mat-icon>arrow_drop_up</mat-icon>
 				<mat-icon>arrow_drop_down</mat-icon>
 			</div>
-
-		</th>
-		<th>Company</th>
-		<th>Contact</th>
-		<th>Action</th>
+    </th>
+				<th class = "header" style="flex:2">
+        <div>
+        	No
+      </div>
+		
+			<div class ="header-action" >
+				<mat-icon>arrow_drop_up</mat-icon>
+				<mat-icon>arrow_drop_down</mat-icon>
+			</div>
+    </th>
+			<th class = "header" style="flex:2">
+        <div>
+        	No
+      </div>
+		
+			<div class ="header-action">
+				<mat-icon>arrow_drop_up</mat-icon>
+				<mat-icon>arrow_drop_down</mat-icon>
+			</div>
+    </th>
 
 	</tr>
-	<tr>
-		<td>1</td>
-		<td>Alfreds Futterkiste</td>
-		<td>Maria Anders</td>
-		<td class='action'>
+	<tr class = "tr-footer">
+		<td class = "footer"  style="width:46px">1</td>
+		<td class = "footer" style="flex:2">Alfreds Futterkiste</td>
+		<td class = "footer" style="flex:2">Maria Anders</td>
+		<td class='footer-action'style="flex:2">
 			<mat-icon>edit</mat-icon>
 			<mat-icon>delete</mat-icon>
 		</td>
 	</tr>
-	<tr>
-		<td>1</td>
-		<td>Alfreds Futterkiste</td>
-		<td>Maria Anders</td>
-		<td class='action'>
-			<mat-icon>edit</mat-icon>
-			<mat-icon>delete</mat-icon>
-		</td>
-	</tr>
+
 </table>
 <!-- <router-outlet></router-outlet> -->
