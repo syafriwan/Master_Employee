@@ -1,39 +1,47 @@
-.container {
+.container-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container-table {
- border: 1px solid #111111;
+.container {
  width: 100%;
- padding:10px;
 }
 .container-title-footer {
- height: 50px;
- border: 1px solid #111111
+ display: flex;
+ height: 30px;
+ border: 1px solid rgb(50, 117, 204);
+ flex-direction: column;
+ justify-content: center;
+ padding-left:5px;
+ background-color: rgb(50, 117, 204)
 }
-
+p{
+  color:white;
+}
+.container-table {
+ border-left: 2px solid rgb(50, 117, 204);
+ border-right: 2px solid rgb(50, 117, 204);
+ padding: 10px
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
-  border-top: 1px solid #111111;
-  border-right: 1px solid #111111;
-  border-bottom: 1px solid #111111;
-  overflow: auto;
   display:flex;
+  width: 100%;
   flex-direction: column;
+  border: 1px solid #494949;
 }
 th {
-  border-left: 1px solid #111111;
-  text-align: left;
-  padding-left: 5px;
+  border-left: 1px solid #494949;
+  border-right: 1px solid #111111;
   font-weight: normal;
-  background-color: #dddddd
+  background-color: #dddddd;
+  padding: 10px
 }
 td{
-  padding: 5px;
   border-left: 1px solid #494949;
+  border-right: 1px solid #111111;
+  padding: 10px
 }
 tr:nth-child(even) {
   background-color: #f0f0f0;
@@ -47,7 +55,6 @@ tr:hover {background-color: #ddd;}
 }
 .header{
  display:flex;
-
  flex-direction: row;
  align-items: center;
  justify-content: space-between;
@@ -55,12 +62,13 @@ tr:hover {background-color: #ddd;}
 .header-action {
  display:flex;
  flex-direction: column;
+ justify-content: center;
  cursor: pointer;
 }
 .header-action mat-icon:hover{
-  background-color: green;
+  background-color: blue;
+  color:white
 }
-
 .tr-footer{
  display:flex;
  width: 100%;
@@ -68,13 +76,23 @@ tr:hover {background-color: #ddd;}
 }
 .footer{
  display:flex;
-
  align-items: center;
 }
 .footer-action{
  display:flex;
  align-items: center;
  justify-content: center;
+ cursor: pointer;
 }
+.footer-action mat-icon:hover{
+  background-color: blue;
+  color:white;
+}
+.table-data{
+  max-height: 500px;
+  overflow-y: auto ;
 
+}
+@media screen and (max-width: 1800px) {
 
+}

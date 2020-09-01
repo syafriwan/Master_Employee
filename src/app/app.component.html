@@ -1,74 +1,114 @@
+<div class="container-flex">
+	<h2>Master Karyawan</h2>
+	<div class="container">
 
-<div class = "container">
-<h2>Master Karyawan</h2>
-<div class = "container-table">
+		<div class="container-title-footer">
+			<p>List Karyawan</p>
+		</div>
 
-<div class = "container-title-footer">
-<p>List Karyawan</p>
+		<div class="container-table">
+			<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="login()">Tambah</button>
+			<table>
+
+				<div class="table-data">
+					<tr class="tr-header">
+						<th class="header" style="flex:1">
+							<div>
+								No
+							</div>
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+
+							</div>
+
+						</th>
+						<th class="header" style="flex:2">
+							<div>
+								Nama
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+						<th class="header" style="flex:2">
+							<div>
+								Tanggal Lahir
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+						<th class="header" style="flex:2">
+							<div>
+								Jabatan
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+            	<th class="header" style="flex:2">
+							<div>
+								NIP
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+            	<th class="header" style="flex:2">
+							<div>
+								Jenis Kelamin
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+            	<th class="header" style="flex:1">
+							<div>
+								Aksi
+							</div>
+
+							<div class="header-action">
+								<mat-icon>arrow_drop_up</mat-icon>
+								<mat-icon>arrow_drop_down</mat-icon>
+							</div>
+						</th>
+					</tr>
+					<tr class="tr-footer">
+						<td class="footer" style="flex:1">1</td>
+						<td class="footer" style="flex:2">Alfreds Futterkiste</td>
+						<td class="footer" style="flex:2">Maria Anders</td>
+            <td class="footer" style="flex:2">Alfreds Futterkiste</td>
+						<td class="footer" style="flex:2">Maria Anders</td>
+            <td class="footer" style="flex:2">Maria Anders</td>
+						<td class='footer-action' style="flex:1">
+							<mat-icon>edit</mat-icon>
+							<mat-icon>delete</mat-icon>
+						</td>
+					</tr>
+
+				</div>
+
+			</table>
+
+		</div>
+
+
+		<div class="container-title-footer">
+		</div>
+
+	</div>
 </div>
 
 
-<div class = "container-title-footer">
-</div>
-
-</div>
-</div>
-
-
-<table>
-	<tr class = "tr-header">
-		<th class = "header" style="width:50px">
-      <div>
-        	No
-      </div>
-		
-			<div class ="header-action" >
-				<mat-icon>arrow_drop_up</mat-icon>
-				<mat-icon>arrow_drop_down</mat-icon>
-			</div>
-
-		</th>
-		<th class = "header" style="flex:2">
-        <div>
-        	No
-      </div>
-		
-			<div class ="header-action">
-				<mat-icon>arrow_drop_up</mat-icon>
-				<mat-icon>arrow_drop_down</mat-icon>
-			</div>
-    </th>
-				<th class = "header" style="flex:2">
-        <div>
-        	No
-      </div>
-		
-			<div class ="header-action" >
-				<mat-icon>arrow_drop_up</mat-icon>
-				<mat-icon>arrow_drop_down</mat-icon>
-			</div>
-    </th>
-			<th class = "header" style="flex:2">
-        <div>
-        	No
-      </div>
-		
-			<div class ="header-action">
-				<mat-icon>arrow_drop_up</mat-icon>
-				<mat-icon>arrow_drop_down</mat-icon>
-			</div>
-    </th>
-
-	</tr>
-	<tr class = "tr-footer">
-		<td class = "footer"  style="width:46px">1</td>
-		<td class = "footer" style="flex:2">Alfreds Futterkiste</td>
-		<td class = "footer" style="flex:2">Maria Anders</td>
-		<td class='footer-action'style="flex:2">
-			<mat-icon>edit</mat-icon>
-			<mat-icon>delete</mat-icon>
-		</td>
-	</tr>
-
-</table>
 <!-- <router-outlet></router-outlet> -->
