@@ -21,27 +21,30 @@ p{
 .container-table {
  border-left: 2px solid rgb(50, 117, 204);
  border-right: 2px solid rgb(50, 117, 204);
- padding: 10px
+ padding: 10px;
 }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   display:flex;
-  width: 100%;
   flex-direction: column;
   border: 1px solid #494949;
+  max-height: 500px;
+  overflow-y: auto ;
 }
 th {
   border-left: 1px solid #494949;
   border-right: 1px solid #111111;
   font-weight: normal;
   background-color: #dddddd;
-  padding: 10px
+  padding: 10px;
+  min-width: 100px;
 }
 td{
   border-left: 1px solid #494949;
   border-right: 1px solid #111111;
-  padding: 10px
+  padding: 10px;
+  min-width: 100px;
 }
 tr:nth-child(even) {
   background-color: #f0f0f0;
@@ -50,7 +53,6 @@ tr:hover {background-color: #ddd;}
 
 .tr-header{
  display:flex;
- width: 100%;
  flex-direction: row;
 }
 .header{
@@ -71,7 +73,6 @@ tr:hover {background-color: #ddd;}
 }
 .tr-footer{
  display:flex;
- width: 100%;
  flex-direction: row;
 }
 .footer{
@@ -87,12 +88,4 @@ tr:hover {background-color: #ddd;}
 .footer-action mat-icon:hover{
   background-color: blue;
   color:white;
-}
-.table-data{
-  max-height: 500px;
-  overflow-y: auto ;
-
-}
-@media screen and (max-width: 1800px) {
-
 }
