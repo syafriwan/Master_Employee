@@ -49,7 +49,6 @@ td{
 tr:nth-child(even) {
   background-color: #f0f0f0;
 }
-tr:hover {background-color: #ddd;}
 
 .tr-header{
  display:flex;
