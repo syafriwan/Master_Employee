@@ -97,7 +97,7 @@
             <td class="footer" style="flex:2">Maria Anders</td>
 						<td class='footer-action' style="flex:1">
 							<mat-icon>edit</mat-icon>
-							<mat-icon>delete</mat-icon>
+							<mat-icon (click)="openModal('custom-modal-1')">delete</mat-icon>
 						</td>
 					</tr>
 
@@ -114,5 +114,14 @@
 	</div>
 </div>
 
+<jw-modal id="custom-modal-1">
+    <h1>A Custom Modal!</h1>
+    <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+</jw-modal>
 
+<jw-modal id="custom-modal-2">
+    <h1 style="height:1000px">A Tall Custom Modal!</h1>
+    <button (click)="closeModal('custom-modal-2');">Close</button>
+</jw-modal>
 <!-- <router-outlet></router-outlet> -->
