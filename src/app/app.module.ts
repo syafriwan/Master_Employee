@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 import { DemoMaterialModule } from "./material-module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { ModalModule } from './modal';
 // import {DialogComponent} from './helpers/dialog/dialog.component'
 @NgModule({
   imports: [
@@ -17,7 +16,6 @@ import { ModalModule } from './modal';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ModalModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

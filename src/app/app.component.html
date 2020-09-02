@@ -1,16 +1,27 @@
-<div class="container-flex">
-	<h2>Master Karyawan</h2>
-	<div class="container">
+<div>
+	<div class="container-modal">
+    <div class="modal">
+      <div class="main-modal">
+        
+        <p>a</p>
+      </div>
+      <div class="modal-footer">
+        <div class = "modal-footer-left">No</div>
+         <div class = "modal-footer-right">Yes</div>
+      </div>
+    </div>
+  </div>
+	<div class="container-not-modal">
+		<div style="margin:10px">
+			<h3 style="text-align:center">Master Karyawan</h3>
+			<div class="container-title-footer">
+				<p>List Karyawan</p>
+			</div>
 
-		<div class="container-title-footer">
-			<p>List Karyawan</p>
-		</div>
+			<div class="container-table">
+				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="login()">Tambah</button>
+				<table>
 
-		<div class="container-table">
-			<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="login()">Tambah</button>
-			<table>
-
-			
 					<tr class="tr-header">
 						<th class="header" style="flex:1">
 							<div>
@@ -53,7 +64,7 @@
 								<mat-icon>arrow_drop_down</mat-icon>
 							</div>
 						</th>
-            	<th class="header" style="flex:2">
+						<th class="header" style="flex:2">
 							<div>
 								NIP
 							</div>
@@ -63,7 +74,7 @@
 								<mat-icon>arrow_drop_down</mat-icon>
 							</div>
 						</th>
-            	<th class="header" style="flex:2">
+						<th class="header" style="flex:2">
 							<div>
 								Jenis Kelamin
 							</div>
@@ -73,7 +84,7 @@
 								<mat-icon>arrow_drop_down</mat-icon>
 							</div>
 						</th>
-            	<th class="header" style="flex:1">
+						<th class="header" style="flex:1">
 							<div>
 								Aksi
 							</div>
@@ -87,37 +98,32 @@
 
 
 
-          
+
 					<tr class="tr-footer">
 						<td class="footer" style="flex:1">1</td>
 						<td class="footer" style="flex:2">Alfreds Futterkiste</td>
 						<td class="footer" style="flex:2">Maria Anders</td>
-            <td class="footer" style="flex:2">Alfreds Futterkiste</td>
+						<td class="footer" style="flex:2">Alfreds Futterkiste</td>
 						<td class="footer" style="flex:2">Maria Anders</td>
-            <td class="footer" style="flex:2">Maria Anders</td>
+						<td class="footer" style="flex:2">Maria Anders</td>
 						<td class='footer-action' style="flex:1">
 							<mat-icon>edit</mat-icon>
 							<mat-icon (click)="openModal('custom-modal-1')">delete</mat-icon>
 						</td>
 					</tr>
 
-			
-
-			</table>
-
-		</div>
 
 
-		<div class="container-title-footer">
+				</table>
+
+			</div>
+
+
+			<div class="container-title-footer">
+			</div>
 		</div>
 
 	</div>
 </div>
-
-<jw-modal id="custom-modal-1">
-    <h1>A Custom Modal!</h1>
-    <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
-</jw-modal>
 
 <!-- <router-outlet></router-outlet> -->
