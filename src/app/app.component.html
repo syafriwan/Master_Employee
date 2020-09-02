@@ -100,13 +100,13 @@
 
 
 
-					<tr class="tr-footer" ngFor="let item of employees;let i = index;">
-						<td class="footer" style="flex:1">{{i}}</td>
+					<tr class="tr-footer"  *ngFor="let item of employees;let i = index;">
+						<td class="footer" style="flex:1">{{i+1}}</td>
 						<td class="footer" style="flex:2">{{item.name}}</td>
-						<td class="footer" style="flex:2">{{item.birthdate}}</td>
-						<td class="footer" style="flex:2">{{item.position.code}}</td>
+						<td class="footer" style="flex:2">{{item.birthDate}}</td>
+						<td class="footer" style="flex:2">{{item.position.name}}</td>
 						<td class="footer" style="flex:2">{{item.idNumber}}</td>
-						<td class="footer" style="flex:2">{{item.gender}}</td>
+						<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
 						<td class='footer-action' style="flex:1">
 							<mat-icon>edit</mat-icon>
 							<mat-icon (click)="openModal('custom-modal-1')">delete</mat-icon>

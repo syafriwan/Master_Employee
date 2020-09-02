@@ -13,7 +13,8 @@ export class EmployeeService {
   constructor(private http: HttpClient) {
   }
 
-  getEmployees(body: any): Observable<any> {
+  getEmployees(): Observable<any> {
+    let body:[]
     let url = "http://localhost:8080/employees";
     let response: any;
     let headers = new HttpHeaders({
