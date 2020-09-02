@@ -3,14 +3,20 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {EmployeeComponent} from "./employee/employee.component";
+import {AddEditComponent} from "./employee/addEdit/addEdit.component";
 // Routes
 const routes: Routes = [
   {
-    path: "",
+    path: "promise/karyawaneditadd",
+    component: AddEditComponent,
+
+  },
+  {
+    path: "promise/karyawanindex",
     component: EmployeeComponent,
 
   },
-  { path: "**", redirectTo: "" }
+  { path: "**", redirectTo: "promise/karyawaneditadd"}
 ];
 
 @NgModule({
@@ -19,4 +25,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const rc = [EmployeeComponent];
+export const rc = [EmployeeComponent,AddEditComponent];

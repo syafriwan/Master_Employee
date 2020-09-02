@@ -1,0 +1,25 @@
+.container-flex{
+  display: flex;
+  border:1px solid black;
+  flex-direction: column;
+  padding: 5px
+}
+.container{
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border:1px solid black;
+}
+.name-field{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 10px
+}
+input[type=text], select {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
