@@ -89,12 +89,12 @@ export class EmployeeComponent implements OnInit {
   deleteAction(param) {
     this.paramDelete = new Employee()
     this.paramDelete.id = param.id;
-    this.paramDelete.name = param.name;
-    this.paramDelete.birthDate = param.birthDate;
-    this.paramDelete.position = param.position;
-    this.paramDelete.idNumber = param.idNumber;
-    this.paramDelete.gender = param.gender;
-    this.paramDelete.isDelete = param.isDelete;
+    // this.paramDelete.name = param.name;
+    // this.paramDelete.birthDate = param.birthDate;
+    // this.paramDelete.position = param.position;
+    // this.paramDelete.idNumber = param.idNumber;
+    // this.paramDelete.gender = param.gender;
+    // this.paramDelete.isDelete = param.isDelete;
     this.toogleModal();
   }
 }

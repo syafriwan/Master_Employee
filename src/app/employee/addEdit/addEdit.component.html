@@ -6,8 +6,8 @@
 			</div>
 			<div class="right-field">
 				<mat-form-field class="example-form-field">
-					<mat-label></mat-label>
-					<input matInput type="text" [(ngModel)]="value">
+					<mat-label>Nama</mat-label>
+					<input matInput type="text" [(ngModel)]="paramEmployee.name">
 				</mat-form-field>
 			</div>
 		</div>
@@ -17,8 +17,8 @@
 			</div>
 			<div class="right-field">
 				<mat-form-field color="accent" appearance="fill">
-					<mat-label></mat-label>
-					<input matInput [matDatepicker]="picker1" [(ngModel)]="name" >
+					<mat-label>Tanggal Lahir</mat-label>
+					<input matInput [matDatepicker]="picker1" [(ngModel)]="paramEmployee.birthDate" >
 					<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
 					<mat-datepicker #picker1></mat-datepicker>
 				</mat-form-field>
@@ -31,7 +31,7 @@
 			<div class="right-field">
 				<mat-form-field appearance="fill">
 					<mat-label>==Pilih Jabatan==</mat-label>
-					<mat-select [(ngModel)]="selectedValue" name="food">
+					<mat-select [(ngModel)]="paramEmployee.position.id" name="food">
 						<mat-option *ngFor="let food of foods" [value]="food.value">
 							{{food.viewValue}}
 						</mat-option>
@@ -45,8 +45,8 @@
 			</div>
 			<div class="right-field">
 				<mat-form-field class="example-form-field">
-					<mat-label>Clearable input</mat-label>
-					<input matInput type="text" [(ngModel)]="value">
+					<mat-label>No Induk Pegawai</mat-label>
+					<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
 				</mat-form-field>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 				Jenis Kelamin
 			</div>
 			<div class="right-field">
-				<mat-radio-group aria-label="Select an option">
+				<mat-radio-group aria-label="Select an option" [(ngModel)]="paramEmployee.gender">
 					<mat-radio-button style="margin-right:50%" value="1">Pria</mat-radio-button>
 					<mat-radio-button value="2">Wanita</mat-radio-button>
 				</mat-radio-group>
@@ -63,10 +63,10 @@
 		</div>
 		<div class="name-field" style="margin-top:50px">
 			<div class="left-field" style=" justify-content: flex-end;margin:10px">
-				<button  class="button-left" mat-raised-button color="primary" (click)="getEmployees()">Kembali</button>
+				<button  class="button-left" mat-raised-button color="primary" (click)="addEmployees()">Kembali</button>
 			</div>
 			<div class="right-field" style="margin:10px">
-				<button  class="button-left" mat-raised-button color="primary" (click)="getEmployees()">Simpan</button>
+				<button  class="button-left" mat-raised-button color="primary" (click)="test()">Simpan</button>
 			</div>
 		</div>
 	</div>
