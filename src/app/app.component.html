@@ -19,7 +19,8 @@
 			</div>
 
 			<div class="container-table">
-				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="login()">Tambah</button>
+				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="getEmployees()">Tambah</button>
+        
 				<table>
 
 					<tr class="tr-header">
@@ -99,18 +100,19 @@
 
 
 
-					<tr class="tr-footer">
-						<td class="footer" style="flex:1">1</td>
-						<td class="footer" style="flex:2">Alfreds Futterkiste</td>
-						<td class="footer" style="flex:2">Maria Anders</td>
-						<td class="footer" style="flex:2">Alfreds Futterkiste</td>
-						<td class="footer" style="flex:2">Maria Anders</td>
-						<td class="footer" style="flex:2">Maria Anders</td>
+					<tr class="tr-footer" ngFor="let item of employees;let i = index;">
+						<td class="footer" style="flex:1">{{i}}</td>
+						<td class="footer" style="flex:2">{{item.name}}</td>
+						<td class="footer" style="flex:2">{{item.birthdate}}</td>
+						<td class="footer" style="flex:2">{{item.position.code}}</td>
+						<td class="footer" style="flex:2">{{item.idNumber}}</td>
+						<td class="footer" style="flex:2">{{item.gender}}</td>
 						<td class='footer-action' style="flex:1">
 							<mat-icon>edit</mat-icon>
 							<mat-icon (click)="openModal('custom-modal-1')">delete</mat-icon>
 						</td>
 					</tr>
+         
 
 
 
