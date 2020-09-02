@@ -13,9 +13,9 @@ export class EmployeeService {
   constructor(private http: HttpClient) {
   }
 
-  getEmployees(): Observable<any> {
+  getEmployees(param): Observable<any> {
     let body:[]
-    let url = "http://localhost:8080/employees";
+    let url = `http://localhost:8080/employees?sort=${param.sortName},${param.sortType}`
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"

@@ -7,6 +7,7 @@ import { EmployeeService } from "./providers/employee.service";
 })
 export class AppComponent implements OnInit {
   employees = [];
+  
   monthNames = [
     "Januari",
     "Februari",
@@ -20,18 +21,42 @@ export class AppComponent implements OnInit {
     "Oktober",
     "November",
     "Desember"
-  ];
+  ]
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {}
-
-  getEmployees() {
+  
+  formatDate(param){
+  let dateObj = new Date(param);
+  let month = this.monthNames[dateObj.getMonth()];
+  let day = String(dateObj.getDate()).padStart(2, "0");
+  let year = dateObj.getFullYear();
+  let output = day + "-" + month + "-" + year;
+  return output;
+  }
+  getEmployees(param?){
     this.employeeService.getEmployees().subscribe(
       rs => {
-        this.employees = rs.content.map(v => { 
-          
-        return {...v}
-
+        this.employees = rs.content.map(v => {  
+        return {...v, birthDate: this.formatDate(v.birthDate)}
+        })
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  sortAction(sortName,sortType){
+  let paramEmployees = {
+    sortName:"",
+    sortType:""
+  }
+    paramEmployees.sortName = sortName;
+    paramEmployees.sortType = sortType;
+    this.employeeService.getEmployees(paramEmployees).subscribe(
+      rs => {
+        this.employees = rs.content.map(v => {  
+        return {...v, birthDate: this.formatDate(v.birthDate)}
         })
       },
       error => {
