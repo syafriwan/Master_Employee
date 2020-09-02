@@ -5,11 +5,10 @@
   padding: 5px
 }
 .container{
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 20px;
   margin-bottom: 20px;
-  border:1px solid black;
 }
 .name-field{
    display: flex;
@@ -17,9 +16,23 @@
    align-items: center;
    margin: 10px
 }
-input[type=text], select {
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.left-field{
+  flex:1;
+  display: flex;
 }
+.right-field{
+  flex:1;
+}
+mat-form-field{
+  width: 100%;
+}
+
+/* @media screen and (max-width: 1200px) {
+mat-form-field{
+    width: 500px;
+}}
+
+@media screen and (max-width: 400px) {
+mat-form-field{
+    width: 125px;
+}} */
