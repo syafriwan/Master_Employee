@@ -1,13 +1,13 @@
 <div>
-	<div class="container-modal" [ngClass]="setModal()">
+	<div class="container-modal" [ngStyle]="{'z-index':modalActive === true ? 1 : -1 }">
     <div class="modal">
       <div class="main-modal">
         <div><p style="color:black;font-size:20px">Konfirmasi</p></div>
         <div ><p style="color:black;font-size:16px; text-align: center;  line-height: 1.6;">Apakah anda akan <br> menghapus data ini</p></div>
       </div>
       <div class="modal-footer">
-        <div class = "modal-footer-left" (click)="modalAction()">No</div>
-         <div class = "modal-footer-right" (click)="modalAction()">Yes</div>
+        <div class = "modal-footer-left" (click)="modalAction('no')">No</div>
+         <div class = "modal-footer-right" (click)="modalAction('yes')">Yes</div>
       </div>
     </div>
   </div>

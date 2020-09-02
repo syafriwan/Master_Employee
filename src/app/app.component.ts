@@ -8,6 +8,7 @@ import { Employee } from "./model/employee";
 })
 export class AppComponent implements OnInit {
   employees = [];
+  paramDelete = new Employee();
   monthNames = [
     "Januari",
     "Februari",
@@ -25,21 +26,23 @@ export class AppComponent implements OnInit {
   modalActive = false;
   constructor(private employeeService: EmployeeService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getEmployees()
+  }
 
   toogleModal() {
     this.modalActive = !this.modalActive;
   }
-  setModal() {
-    let classes = {
-      modalActive: this.modalActive
-    };
-    return classes;
+  modalAction(param){
+    console.log(param)
+    if(param == 'no'){
+      this.toogleModal()
+    }else{
+      this.deleteEmployess(this.paramDelete);
+      this.toogleModal()
+      this.getEmployees()
+    }
   }
-  modalAction(){
-
-  }
-
   formatDate(param) {
     let dateObj = new Date(param);
     let month = this.monthNames[dateObj.getMonth()];
@@ -55,13 +58,24 @@ export class AppComponent implements OnInit {
           return { ...v, birthDate: this.formatDate(v.birthDate) };
         });
         this.employees = this.employees.filter(v => {
-          return v.isDelete = 0;
+          return v.isDelete == 0;
         });
       },
       error => {
         console.log(error);
       }
     );
+  }
+ deleteEmployess(param){
+    this.employeeService.deleteEmployees(param).subscribe(
+      rs => {
+        console.log(rs);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  this.ngOnInit()
   }
   sortAction(sortName, sortType) {
     let paramSort = {
@@ -73,22 +87,14 @@ export class AppComponent implements OnInit {
     this.getEmployees(paramSort);
   }
   deleteAction(param) {
-    let paramDelete = new Employee();
-    paramDelete.id = param.id;
-    paramDelete.name = param.name;
-    paramDelete.birthDate = param.birthDate;
-    paramDelete.position = param.position;
-    paramDelete.idNumber = param.idNumber;
-    paramDelete.gender = param.gender;
-    paramDelete.isDelete = param.isDelete;
-     this.toogleModal() ;
-    // this.employeeService.deleteEmployees(paramDelete).subscribe(
-    //   rs => {
-    //     console.log(rs);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    this.paramDelete = new Employee()
+    this.paramDelete.id = param.id;
+    this.paramDelete.name = param.name;
+    this.paramDelete.birthDate = param.birthDate;
+    this.paramDelete.position = param.position;
+    this.paramDelete.idNumber = param.idNumber;
+    this.paramDelete.gender = param.gender;
+    this.paramDelete.isDelete = param.isDelete;
+    this.toogleModal();
   }
 }
