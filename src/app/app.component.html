@@ -1,110 +1,28 @@
 <div>
 	<div class="container-modal" [ngStyle]="{'z-index':modalActive === true ? 1 : -1 }">
-    <div class="modal">
-      <div class="main-modal">
-        <div><p style="color:black;font-size:20px">Konfirmasi</p></div>
-        <div ><p style="color:black;font-size:16px; text-align: center;  line-height: 1.6;">Apakah anda akan <br> menghapus data ini</p></div>
-      </div>
-      <div class="modal-footer">
-        <div class = "modal-footer-left" (click)="modalAction('no')">No</div>
-         <div class = "modal-footer-right" (click)="modalAction('yes')">Yes</div>
-      </div>
-    </div>
-  </div>
+		<div class="modal">
+			<div class="main-modal">
+				<div>
+					<p style="color:black;font-size:20px">Konfirmasi</p>
+				</div>
+				<div>
+					<p style="color:black;font-size:16px; text-align: center;  line-height: 1.6;">Apakah anda akan
+						<br> menghapus data ini</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="modal-footer-left" (click)="modalAction('no')">No</div>
+				<div class="modal-footer-right" (click)="modalAction('yes')">Yes</div>
+			</div>
+		</div>
+	</div>
 	<div class="container-not-modal">
 		<div style="margin:10px">
 			<h3 style="text-align:center">Master Karyawan</h3>
 			<div class="container-title-footer">
 				<p>List Karyawan</p>
 			</div>
-
-			<div class="container-table">
-				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="getEmployees()">Tambah</button>
-        
-				<table>
-
-					<tr class="tr-header">
-						<th class="header" style="flex:1">
-							<div>
-								No
-							</div>
-
-						</th>
-						<th class="header" style="flex:2">
-							<div>
-								Nama
-							</div>
-
-							<div class="header-action">
-								<mat-icon (click)="sortAction('name','desc')">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction('name','asc')">arrow_drop_down</mat-icon>
-							</div>
-						</th>
-						<th class="header" style="flex:2">
-							<div>
-								Tanggal Lahir
-							</div>
-
-							<div class="header-action">
-								<mat-icon (click)="sortAction('birthDate','desc')">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction('birthDate','asc')">arrow_drop_down</mat-icon>
-							</div>
-						</th>
-						<th class="header" style="flex:2">
-							<div>
-								Jabatan
-							</div>
-
-							<div class="header-action">
-								<mat-icon (click)="sortAction('position','desc')">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction('position','asc')">arrow_drop_down</mat-icon>
-							</div>
-						</th>
-						<th class="header" style="flex:2">
-							<div>
-								NIP
-							</div>
-
-							<div class="header-action">
-								<mat-icon (click)="sortAction('idNumber','desc')">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction('idNumber','asc')">arrow_drop_down</mat-icon>
-							</div>
-						</th>
-						<th class="header" style="flex:2">
-							<div>
-								Jenis Kelamin
-							</div>
-
-							<div class="header-action">
-								<mat-icon (click)="sortAction('gender','desc')">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction('gender','asc')">arrow_drop_down</mat-icon>
-							</div>
-						</th>
-						<th class="header" style="flex:1">
-							<div>
-								Aksi
-							</div>
-						</th>
-					</tr>
-
-					<tr class="tr-footer"  *ngFor="let item of employees;let i = index;">
-						<td class="footer" style="flex:1">{{i+1}}</td>
-						<td class="footer" style="flex:2">{{item.name}}</td>
-						<td class="footer" style="flex:2">{{item.birthDate}}</td>
-						<td class="footer" style="flex:2">{{item.position.name}}</td>
-						<td class="footer" style="flex:2">{{item.idNumber}}</td>
-						<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
-						<td class='footer-action' style="flex:1">
-							<mat-icon>edit</mat-icon>
-							<mat-icon (click)="deleteAction(item)">delete</mat-icon>
-						</td>
-					</tr>
-        
-				</table>
-
-			</div>
-
-
+			<router-outlet></router-outlet>
 			<div class="container-title-footer">
 			</div>
 		</div>
