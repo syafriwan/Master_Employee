@@ -13,9 +13,25 @@ export class EmployeeService {
   constructor(private http: HttpClient) {
   }
 
-  getEmployees(param): Observable<any> {
-    let body:[]
-    let url = `http://localhost:8080/employees?sort=${param.sortName},${param.sortType}`
+  getEmployees(param?): Observable<any> {
+    let url = `http://localhost:8080/employees?sort=${param?param.sortName:""},${param?param.sortType:""}`
+    console.log(param)
+    console.log(url)
+    let response: any;
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+      // 'X-Requested-Url': url,
+      // 'X-Requested-Method': 'POST',
+      // 'Authorization': Authorization
+    });
+    let options = { headers: headers };
+
+    return this.http
+      .get(url,options)
+      .pipe(map(this.extractData))
+  }
+  deleteEmployees(body): Observable<any> {
+    let url = `http://localhost:8080/employees`
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -29,7 +45,6 @@ export class EmployeeService {
       .get(url, body, options)
       .pipe(map(this.extractData))
   }
-
   private extractData(body: any) {
     return Object.assign(body);
   }

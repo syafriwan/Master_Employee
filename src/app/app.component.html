@@ -36,8 +36,8 @@
 							</div>
 
 							<div class="header-action">
-								<mat-icon (click)="sortAction(name,desc)">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction(name,asc)">arrow_drop_down</mat-icon>
+								<mat-icon (click)="sortAction('name','desc')">arrow_drop_up</mat-icon>
+								<mat-icon (click)="sortAction('name','asc')">arrow_drop_down</mat-icon>
 							</div>
 						</th>
 						<th class="header" style="flex:2">
@@ -46,8 +46,8 @@
 							</div>
 
 							<div class="header-action">
-								<mat-icon (click)="sortAction(birthDate,desc)">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction(birthDate,asc)">arrow_drop_down</mat-icon>
+								<mat-icon (click)="sortAction('birthDate','desc')">arrow_drop_up</mat-icon>
+								<mat-icon (click)="sortAction('birthDate','asc')">arrow_drop_down</mat-icon>
 							</div>
 						</th>
 						<th class="header" style="flex:2">
@@ -56,8 +56,8 @@
 							</div>
 
 							<div class="header-action">
-								<mat-icon (click)="sortAction(position,desc)">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction(position,asc)">arrow_drop_down</mat-icon>
+								<mat-icon (click)="sortAction('position','desc')">arrow_drop_up</mat-icon>
+								<mat-icon (click)="sortAction('position','asc')">arrow_drop_down</mat-icon>
 							</div>
 						</th>
 						<th class="header" style="flex:2">
@@ -66,8 +66,8 @@
 							</div>
 
 							<div class="header-action">
-								<mat-icon (click)="sortAction(idNumber,desc)">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction(idNumber,asc)">arrow_drop_down</mat-icon>
+								<mat-icon (click)="sortAction('idNumber','desc')">arrow_drop_up</mat-icon>
+								<mat-icon (click)="sortAction('idNumber','asc')">arrow_drop_down</mat-icon>
 							</div>
 						</th>
 						<th class="header" style="flex:2">
@@ -76,8 +76,8 @@
 							</div>
 
 							<div class="header-action">
-								<mat-icon (click)="sortAction(gender,desc)">arrow_drop_up</mat-icon>
-								<mat-icon (click)="sortAction(gender,asc)">arrow_drop_down</mat-icon>
+								<mat-icon (click)="sortAction('gender','desc')">arrow_drop_up</mat-icon>
+								<mat-icon (click)="sortAction('gender','asc')">arrow_drop_down</mat-icon>
 							</div>
 						</th>
 						<th class="header" style="flex:1">
@@ -96,7 +96,7 @@
 						<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
 						<td class='footer-action' style="flex:1">
 							<mat-icon>edit</mat-icon>
-							<mat-icon (click)="openModal('custom-modal-1')">delete</mat-icon>
+							<mat-icon (click)="deleteAction(item)">delete</mat-icon>
 						</td>
 					</tr>
         
