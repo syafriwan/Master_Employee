@@ -15,8 +15,6 @@ export class EmployeeService {
 
   getEmployees(param?): Observable<any> {
     let url = `http://localhost:8080/employees?sort=${param?param.sortName:""},${param?param.sortType:""}`
-    console.log(param)
-    console.log(url)
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -31,7 +29,7 @@ export class EmployeeService {
       .pipe(map(this.extractData))
   }
   deleteEmployees(body): Observable<any> {
-    let url = `http://localhost:8080/employees`
+    let url = `http://localhost:8080/employee`
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -42,7 +40,7 @@ export class EmployeeService {
     let options = { headers: headers };
 
     return this.http
-      .get(url, body, options)
+      .delete(url, body, options)
       .pipe(map(this.extractData))
   }
   private extractData(body: any) {

@@ -67,6 +67,14 @@ export class AppComponent implements OnInit {
     paramDelete.idNumber = param.idNumber
     paramDelete.gender = param.gender
     paramDelete.isDelete = param.isDelete
-    this.getEmployees(JSON.stringify(paramDelete));
+    console.log(JSON.stringify(paramDelete))
+     this.employeeService.deleteEmployees(JSON.stringify(paramDelete)).subscribe(
+      rs => {
+        console.log(rs)
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
