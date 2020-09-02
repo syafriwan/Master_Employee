@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "./providers/employee.service";
-import {Employee} from "./model/employee"
+import { Employee } from "./model/employee";
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
@@ -22,9 +22,23 @@ export class AppComponent implements OnInit {
     "November",
     "Desember"
   ];
+  modalActive = false;
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {}
+
+  toogleModal() {
+    this.modalActive = !this.modalActive;
+  }
+  setModal() {
+    let classes = {
+      modalActive: this.modalActive
+    };
+    return classes;
+  }
+  modalAction(){
+
+  }
 
   formatDate(param) {
     let dateObj = new Date(param);
@@ -41,7 +55,7 @@ export class AppComponent implements OnInit {
           return { ...v, birthDate: this.formatDate(v.birthDate) };
         });
         this.employees = this.employees.filter(v => {
-          return v.isDelete != 0;
+          return v.isDelete = 0;
         });
       },
       error => {
@@ -59,22 +73,22 @@ export class AppComponent implements OnInit {
     this.getEmployees(paramSort);
   }
   deleteAction(param) {
-    let paramDelete = new Employee()
-    paramDelete.id = param.id
-    paramDelete.name = param.name
-    paramDelete.birthDate = new Date(param.birthDate)
-    paramDelete.position = param.position
-    paramDelete.idNumber = param.idNumber
-    paramDelete.gender = param.gender
-    paramDelete.isDelete = param.isDelete
-    console.log(JSON.stringify(paramDelete))
-     this.employeeService.deleteEmployees(JSON.stringify(paramDelete)).subscribe(
-      rs => {
-        console.log(rs)
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    let paramDelete = new Employee();
+    paramDelete.id = param.id;
+    paramDelete.name = param.name;
+    paramDelete.birthDate = param.birthDate;
+    paramDelete.position = param.position;
+    paramDelete.idNumber = param.idNumber;
+    paramDelete.gender = param.gender;
+    paramDelete.isDelete = param.isDelete;
+     this.toogleModal() ;
+    // this.employeeService.deleteEmployees(paramDelete).subscribe(
+    //   rs => {
+    //     console.log(rs);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   }
 }

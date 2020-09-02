@@ -29,7 +29,8 @@ export class EmployeeService {
       .pipe(map(this.extractData))
   }
   deleteEmployees(body): Observable<any> {
-    let url = `http://localhost:8080/employee`
+    console.log(JSON.stringify(body))
+    let url = `http://localhost:8080/employeeDelete`
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -40,7 +41,7 @@ export class EmployeeService {
     let options = { headers: headers };
 
     return this.http
-      .delete(url, body, options)
+      .post(url, JSON.stringify(body), options)
       .pipe(map(this.extractData))
   }
   private extractData(body: any) {
