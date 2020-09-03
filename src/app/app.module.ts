@@ -7,6 +7,7 @@ import { AppRoutingModule, rc } from "./app.routing";
 import { DemoMaterialModule } from "./material-module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
+
 // import {DialogComponent} from './helpers/dialog/dialog.component'
 @NgModule({
   imports: [
