@@ -2,10 +2,16 @@ import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "../../providers/employee.service";
 import { Employee } from "../../model/employee";
 import { Router, ActivatedRoute } from "@angular/router";
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../../providers/format-datepicker';
 @Component({
   selector: "addEdit",
   templateUrl: "./addEdit.component.html",
-  styleUrls: ["./addEdit.component.css"]
+  styleUrls: ["./addEdit.component.css"],
+   providers: [
+    {provide: DateAdapter, useClass: AppDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+  ]
 })
 export class AddEditComponent implements OnInit {
   isNumberNIP = true;
