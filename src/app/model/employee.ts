@@ -3,10 +3,7 @@ export class Employee {
     name: string;
     birthDate: string;
     position: {
-      id:string,
-      code:string,
-      name:string,
-      isDelete:string
+      id:string
     };
     idNumber:string;
     gender:string;

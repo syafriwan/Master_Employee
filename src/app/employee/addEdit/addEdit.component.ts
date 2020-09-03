@@ -11,8 +11,8 @@ export class AddEditComponent implements OnInit {
   isNumberNIP = false;
   isUniqeuNIP = false;
   isEdit = false;
-  idOnEdit:any;
-  nipOnEdit:any;
+  idOnEdit: any;
+  nipOnEdit: any;
   positionSelection = [];
   paramEmployee = {
     name: "",
@@ -24,7 +24,7 @@ export class AddEditComponent implements OnInit {
     gender: ""
   };
   modalActive = false;
- 
+
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -32,9 +32,9 @@ export class AddEditComponent implements OnInit {
   ) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
-        params.edit == "true" ?this.isEdit = true:this.isEdit = false
-        this.idOnEdit = Number(params.id)||0
-        console.log(params)
+        params.edit == "true" ? (this.isEdit = true) : (this.isEdit = false);
+        this.idOnEdit = Number(params.id) || 0;
+        console.log(params);
       });
     }
   }
@@ -42,10 +42,10 @@ export class AddEditComponent implements OnInit {
     this.modalActive = !this.modalActive;
   }
   ngOnInit() {
-    if(this.isEdit){
-    this.getPosition(this.idOnEdit);
-    }else{
-    this.getPosition(0);
+    if (this.isEdit) {
+      this.getPosition(this.idOnEdit);
+    } else {
+      this.getPosition(0);
     }
   }
   modalAction(param) {
@@ -66,24 +66,35 @@ export class AddEditComponent implements OnInit {
     employee.name = this.paramEmployee.name;
     employee.birthDate = output;
     employee.position = {
-      id:Number(this.paramEmployee.position.id),
-      code:"",
-      name:"",
-      isDelete:"",
+      id: this.paramEmployee.position.id
     },
-    employee.idNumber = Number(this.paramEmployee.idNumber);
-    employee.gender = Number(this.paramEmployee.gender);
-    console.log(employee)
-    // this.employeeService.addEmployees(employee).subscribe(
-    //   rs => {
-    //     if (rs) {
-    //       this.router.navigate(["/promise/karyawanindex"]);
-    //     }
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+      (employee.idNumber = this.paramEmployee.idNumber);
+    employee.gender = this.paramEmployee.gender;
+    console.log(employee);
+    if (this.isEdit) {
+      this.employeeService.addEmployees(employee).subscribe(
+        rs => {
+          if (rs) {
+            this.router.navigate(["/promise/karyawanindex"]);
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    else{
+       this.employeeService.editEmployees(employee).subscribe(
+        rs => {
+          if (rs) {
+            this.router.navigate(["/promise/karyawanindex"]);
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
   back() {
     this.router.navigate(["/promise/karyawanindex"]);
@@ -92,13 +103,13 @@ export class AddEditComponent implements OnInit {
     this.employeeService.getPositionEmployees(param).subscribe(
       rs => {
         this.positionSelection = rs.positionList;
-        if(this.isEdit){
+        if (this.isEdit) {
           this.paramEmployee.name = rs.employee.name;
           this.paramEmployee.birthDate = rs.employee.birthDate;
           this.paramEmployee.position.id = rs.employee.position.id.toString();
           this.paramEmployee.idNumber = rs.employee.idNumber.toString();
           this.paramEmployee.gender = rs.employee.gender.toString();
-          this.nipOnEdit = rs.employee.id
+          this.nipOnEdit = rs.employee.id;
         }
       },
       error => {

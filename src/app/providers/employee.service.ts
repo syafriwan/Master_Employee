@@ -60,7 +60,7 @@ export class EmployeeService {
   }
   editEmployees(body): Observable<any> {
     console.log(JSON.stringify(body));
-    let url = `http://localhost:8080/employeeAdd`;
+    let url = `http://localhost:8080/employeeEdit`;
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -71,7 +71,7 @@ export class EmployeeService {
     let options = { headers: headers };
 
     return this.http
-      .put(url, JSON.stringify(body), options)
+      .post(url, JSON.stringify(body), options)
       .pipe(map(this.extractData));
   }
   getPositionEmployees(body): Observable<any> {
