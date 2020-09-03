@@ -44,7 +44,7 @@ export class EmployeeService {
       .post(url, JSON.stringify(body), options)
       .pipe(map(this.extractData))
   }
-   addEmployees(body): Observable<any> {
+  addEmployees(body): Observable<any> {
     console.log(JSON.stringify(body))
     let url = `http://localhost:8080/employeeAdd`
     let response: any;
@@ -58,6 +58,22 @@ export class EmployeeService {
 
     return this.http
       .post(url, JSON.stringify(body), options)
+      .pipe(map(this.extractData))
+  }
+  getPositionEmployees(body): Observable<any> {
+    console.log(JSON.stringify(body))
+    let url = `http://localhost:8080/employeePosition/${body}`
+    let response: any;
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+      // 'X-Requested-Url': url,
+      // 'X-Requested-Method': 'POST',
+      // 'Authorization': Authorization
+    });
+    let options = { headers: headers };
+
+    return this.http
+      .get(url, options)
       .pipe(map(this.extractData))
   }
   private extractData(body: any) {

@@ -11,10 +11,9 @@ interface Food {
   styleUrls: ["./addEdit.component.css"]
 })
 export class AddEditComponent implements OnInit {
-  foods: Food[] = [
-    { value: "1", viewValue: "Programmer" },
-    { value: "2", viewValue: "Tester" }
-  ];
+  isNumberNIP = false;
+  isUniqeuNIP = false;
+  positionSelection = [];
   paramEmployee = {
     name: "",
     birthDate: "",
@@ -25,7 +24,9 @@ export class AddEditComponent implements OnInit {
     gender: ""
   };
   constructor(private employeeService: EmployeeService) {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPosition(0);
+  }
   addEmployees() {
     let employee = new Employee();
     employee.name = this.paramEmployee.name;
@@ -35,24 +36,45 @@ export class AddEditComponent implements OnInit {
     employee.gender = Number(this.paramEmployee.gender);
     console.log(employee);
 
-    // this.employeeService.addEmployees(param).subscribe(
+    // this.employeeService.addEmployees(employee).subscribe(
     //   rs => {
-
+    //       console.log(rs)
     //   },
     //   error => {
     //     console.log(error);
     //   }
     // );
   }
+  getPosition(param) {
+    this.employeeService.getPositionEmployees(param).subscribe(
+      rs => {
+        this.positionSelection = rs.positionList;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   test() {
-    let field = document.querySelector('[name="username"]');
+    const field = document.querySelector('[name="username"]');
     field.addEventListener("keypress", function(event) {
-      var key = event.keyCode;
+    const key = event.keyCode;
       if (key === 32) {
         event.preventDefault();
       }
     });
-    var res = /^\d*$/.test(this.paramEmployee.idNumber);
-    console.log(res);
+    this.isNumberNIP = /^\d*$/.test(this.paramEmployee.idNumber);
+    console.log(this.isNumberNIP);
+    this.employeeService.getEmployees().subscribe(
+      rs => {
+        this.isUniqeuNIP = rs.content.every(v => {
+          return v.idNumber != this.paramEmployee.idNumber;
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

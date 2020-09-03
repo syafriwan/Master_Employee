@@ -31,9 +31,9 @@
 			<div class="right-field">
 				<mat-form-field appearance="fill">
 					<mat-label>==Pilih Jabatan==</mat-label>
-					<mat-select [(ngModel)]="paramEmployee.position.id" name="food">
-						<mat-option *ngFor="let food of foods" [value]="food.value">
-							{{food.viewValue}}
+					<mat-select [(ngModel)]="paramEmployee.position.id">
+						<mat-option *ngFor="let item of positionSelection" [value]="item.id">
+							{{item.name}}
 						</mat-option>
 					</mat-select>
 				</mat-form-field>
@@ -48,6 +48,12 @@
 					<mat-label>No Induk Pegawai</mat-label>
 					<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
 				</mat-form-field>
+					<mat-error *ngIf="!isNumberNIP && paramEmployee.idNumber">
+					  NIP must <strong>Number</strong>
+					</mat-error>
+					<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+						NIP already in use
+					</mat-error>
 			</div>
 		</div>
 		<div class="name-field">
@@ -66,7 +72,8 @@
 				<button  class="button-left" mat-raised-button color="primary" (click)="addEmployees()">Kembali</button>
 			</div>
 			<div class="right-field" style="margin:10px">
-				<button  class="button-left" mat-raised-button color="primary" (click)="test()">Simpan</button>
+				<button  class="button-left" mat-raised-button color="primary" (click)="addEmployees()"
+        [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP   ">Simpan</button>
 			</div>
 		</div>
 	</div>
