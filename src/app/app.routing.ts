@@ -7,14 +7,12 @@ import {AddEditComponent} from "./employee/addEdit/addEdit.component";
 // Routes
 const routes: Routes = [
   {
-    path: "promise/karyawaneditadd",
-    component: AddEditComponent,
-
-  },
-  {
     path: "promise/karyawanindex",
     component: EmployeeComponent,
-
+  },
+  {
+    path: "promise/karyawaneditadd",
+    component: AddEditComponent,
   },
   { path: "**", redirectTo: "promise/karyawaneditadd"}
 ];
