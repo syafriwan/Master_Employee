@@ -13,20 +13,50 @@ export class AddEditComponent implements OnInit {
   positionSelection = [];
   paramEmployee = {
     name: "",
-    birthDate: "",
+    birthDate: "2020-10-08",
     position: {
       id: ""
     },
     idNumber: "",
     gender: ""
   };
-  constructor(private employeeService: EmployeeService,private router: Router,) {}
+  modalActive = false;
+  toogleModal() {
+    this.modalActive = !this.modalActive;
+  }
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe(params => {
+      // const date = new Date(params.birthDate);
+      // this.paramEmployee.name = params.name;
+      // this.paramEmployee.birthDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}` ;
+      // this.paramEmployee.position = params.position;
+      // this.paramEmployee.idNumber = params.idNumber;
+      // this.paramEmployee.gender = params.gender;
+      // console.log(this.paramEmployee)
+            console.log(JSON.stringify(params.position.id))
+    });
+  }
   ngOnInit() {
     this.getPosition(0);
+    // console.log(this.paramEmployee)
+  }
+  modalAction(param) {
+    console.log(param);
+    if (param == "no") {
+      this.toogleModal();
+    } else {
+      this.addEmployees();
+      this.toogleModal();
+    }
   }
   addEmployees() {
-    const date  = new Date(this.paramEmployee.birthDate);
-    let stringDate = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+    const date = new Date(this.paramEmployee.birthDate);
+    let stringDate =
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     let employee = new Employee();
     employee.name = this.paramEmployee.name;
     employee.birthDate = stringDate;
@@ -40,16 +70,16 @@ export class AddEditComponent implements OnInit {
     employee.gender = Number(this.paramEmployee.gender);
     this.employeeService.addEmployees(employee).subscribe(
       rs => {
-          if(rs){
-            this.router.navigate(["/promise/karyawanindex"]);
-          } 
+        if (rs) {
+          this.router.navigate(["/promise/karyawanindex"]);
+        }
       },
       error => {
         console.log(error);
       }
     );
   }
-  back(){
+  back() {
     this.router.navigate(["/promise/karyawanindex"]);
   }
   getPosition(param) {

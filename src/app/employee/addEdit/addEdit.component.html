@@ -1,80 +1,110 @@
-<div class="container-flex">
-	<div class="container">
-		<div class="name-field">
-			<div class="left-field">
-				Nama
+<div>
+	<div class="container-modal" [ngStyle]="{'z-index':modalActive === true ? 1 : -1 }">
+		<div class="modal">
+			<div class="main-modal">
+				<div>
+					<p style="color:black;font-size:20px">Konfirmasi</p>
+				</div>
+				<div>
+					<p style="color:black;font-size:16px; text-align: center;  line-height: 1.6;">Apakah anda akan
+						<br> menyimpan data ini</p>
+				</div>
 			</div>
-			<div class="right-field">
-				<mat-form-field class="example-form-field">
-					<mat-label>Nama</mat-label>
-					<input matInput type="text" [(ngModel)]="paramEmployee.name">
+			<div class="modal-footer">
+				<div class="modal-footer-left" (click)="modalAction('no')">No</div>
+				<div class="modal-footer-right" (click)="modalAction('yes')">Yes</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-not-modal">
+		<div style="margin:10px">
+			<h3 style="text-align:center">Master Karyawan</h3>
+			<div class="container-title-footer">
+				<p>List Karyawan</p>
+			</div>
+			<div class="container-form-flex">
+				<div class="container-form">
+					<div class="name-field">
+						<div class="left-field">
+							Nama
+						</div>
+						<div class="right-field">
+							<mat-form-field class="example-form-field">
+								<mat-label>Nama</mat-label>
+								<input matInput type="text" [(ngModel)]="paramEmployee.name">
 				</mat-form-field>
-			</div>
-		</div>
-		<div class="name-field">
-			<div class="left-field">
-				Tanggal Lahir
-			</div>
-			<div class="right-field">
-				<mat-form-field color="accent" appearance="fill">
-					<mat-label>Tanggal Lahir</mat-label>
-					<input matInput [matDatepicker]="picker1" [(ngModel)]="paramEmployee.birthDate" >
-					<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-					<mat-datepicker #picker1></mat-datepicker>
+						</div>
+					</div>
+					<div class="name-field">
+						<div class="left-field">
+							Tanggal Lahir
+						</div>
+						<div class="right-field">
+							<mat-form-field color="accent" appearance="fill">
+								<mat-label>Tanggal Lahir</mat-label>
+								<input matInput [matDatepicker]="picker1" [(ngModel)]="paramEmployee.birthDate" >
+								<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+								<mat-datepicker #picker1></mat-datepicker>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="name-field">
+						<div class="left-field">
+							Jabatan
+						</div>
+						<div class="right-field">
+							<mat-form-field appearance="fill">
+								<mat-label>==Pilih Jabatan==</mat-label>
+								<mat-select [(ngModel)]="paramEmployee.position.id">
+									<mat-option *ngFor="let item of positionSelection" [value]="item.id">
+										{{item.name}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="name-field">
+						<div class="left-field">
+							NIP
+						</div>
+						<div class="right-field">
+							<mat-form-field class="example-form-field">
+								<mat-label>No Induk Pegawai</mat-label>
+								<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
 				</mat-form-field>
-			</div>
-		</div>
-		<div class="name-field">
-			<div class="left-field">
-				Jabatan
-			</div>
-			<div class="right-field">
-				<mat-form-field appearance="fill">
-					<mat-label>==Pilih Jabatan==</mat-label>
-					<mat-select [(ngModel)]="paramEmployee.position.id">
-						<mat-option *ngFor="let item of positionSelection" [value]="item.id">
-							{{item.name}}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</div>
-		</div>
-		<div class="name-field">
-			<div class="left-field">
-				NIP
-			</div>
-			<div class="right-field">
-				<mat-form-field class="example-form-field">
-					<mat-label>No Induk Pegawai</mat-label>
-					<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
-				</mat-form-field>
-					<mat-error *ngIf="!isNumberNIP && paramEmployee.idNumber">
-					  NIP must <strong>Number</strong>
-					</mat-error>
-					<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
-						NIP already in use
-					</mat-error>
-			</div>
-		</div>
-		<div class="name-field">
-			<div class="left-field">
-				Jenis Kelamin
-			</div>
-			<div class="right-field">
-				<mat-radio-group aria-label="Select an option" [(ngModel)]="paramEmployee.gender">
-					<mat-radio-button style="margin-right:50%" value="1">Pria</mat-radio-button>
-					<mat-radio-button value="2">Wanita</mat-radio-button>
-				</mat-radio-group>
-			</div>
-		</div>
-		<div class="name-field" style="margin-top:50px">
-			<div class="left-field" style=" justify-content: flex-end;margin:10px">
-				<button  class="button-left" mat-raised-button color="primary" (click)="back()">Kembali</button>
-			</div>
-			<div class="right-field" style="margin:10px">
-				<button  class="button-left" mat-raised-button color="primary" (click)="addEmployees()"
+								<mat-error *ngIf="!isNumberNIP && paramEmployee.idNumber">
+									NIP must <strong>Number</strong>
+								</mat-error>
+								<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+									NIP already in use
+								</mat-error>
+						</div>
+					</div>
+					<div class="name-field">
+						<div class="left-field">
+							Jenis Kelamin
+						</div>
+						<div class="right-field">
+							<mat-radio-group aria-label="Select an option" [(ngModel)]="paramEmployee.gender">
+								<mat-radio-button style="margin-right:50%" value="1">Pria</mat-radio-button>
+								<mat-radio-button value="2">Wanita</mat-radio-button>
+							</mat-radio-group>
+						</div>
+					</div>
+					<div class="name-field" style="margin-top:50px">
+						<div class="left-field" style=" justify-content: flex-end;margin:10px">
+							<button  class="button-left" mat-raised-button color="primary" (click)="back()">Kembali</button>
+						</div>
+						<div class="right-field" style="margin:10px">
+							<button  class="button-left" mat-raised-button color="primary" (click)="toogleModal()"
         [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP   ">Simpan</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-title-footer">
 			</div>
 		</div>
+
 	</div>
 </div>

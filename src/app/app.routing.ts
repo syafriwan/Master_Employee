@@ -1,3 +1,4 @@
+
 // app.routing.ts
 // App Routing as a Module
 import { NgModule } from "@angular/core";
@@ -14,7 +15,7 @@ const routes: Routes = [
     path: "promise/karyawaneditadd",
     component: AddEditComponent,
   },
-  { path: "**", redirectTo: "promise/karyawaneditadd"}
+  { path: "**", redirectTo: "promise/karyawanindex"},
 ];
 
 @NgModule({

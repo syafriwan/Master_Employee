@@ -36,6 +36,10 @@ export class EmployeeComponent implements OnInit {
   goAdd(){
     this.router.navigate(["promise/karyawaneditadd"]);
   }
+  goEdit(param){
+    this.router.navigate(["promise/karyawaneditadd"], { queryParams: param });
+    console.log(param)
+  }
   modalAction(param){
     console.log(param)
     if(param == 'no'){

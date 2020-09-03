@@ -1,4 +1,29 @@
-	<div class="container-table">
+<div>
+	<div class="container-modal" [ngStyle]="{'z-index':modalActive === true ? 1 : -1 }">
+		<div class="modal">
+			<div class="main-modal">
+				<div>
+					<p style="color:black;font-size:20px">Konfirmasi</p>
+				</div>
+				<div>
+					<p style="color:black;font-size:16px; text-align: center;  line-height: 1.6;">Apakah anda akan
+						<br> menghapus data ini</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="modal-footer-left" (click)="modalAction('no')">No</div>
+				<div class="modal-footer-right" (click)="modalAction('yes')">Yes</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-not-modal">
+		<div style="margin:10px">
+			<p style="text-align:center;color:black;font-size:25px">Master Karyawan</p>
+			<div class="container-title-footer">
+				<p>List Karyawan</p>
+			</div>
+
+			<div class="container-table">
 				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="goAdd()">Tambah</button>
 				<table>
 
@@ -66,7 +91,7 @@
 						</th>
 					</tr>
 
-					<tr class="tr-footer"  *ngFor="let item of employees;let i = index;">
+					<tr class="tr-footer" *ngFor="let item of employees;let i = index;">
 						<td class="footer" style="flex:1">{{i+1}}</td>
 						<td class="footer" style="flex:2">{{item.name}}</td>
 						<td class="footer" style="flex:2">{{item.birthDate}}</td>
@@ -74,11 +99,15 @@
 						<td class="footer" style="flex:2">{{item.idNumber}}</td>
 						<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
 						<td class='footer-action' style="flex:1">
-							<mat-icon>edit</mat-icon>
+							<mat-icon (click)="goEdit(item)">edit</mat-icon>
 							<mat-icon (click)="deleteAction(item)">delete</mat-icon>
 						</td>
 					</tr>
-        
 				</table>
-
 			</div>
+			<div class="container-title-footer">
+			</div>
+		</div>
+
+	</div>
+</div>
