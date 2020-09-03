@@ -94,11 +94,12 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.deleteEmployees(param).subscribe(
       rs => {
         this.isLoading = false
+        this.getEmployees();
       },
       error => {
         console.log(error);
         this.isLoading = false
-        this.getEmployees();
+       
       }
     );
     this.ngOnInit();
