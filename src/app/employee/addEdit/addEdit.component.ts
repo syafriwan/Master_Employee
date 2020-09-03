@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "../../providers/employee.service";
 import { Employee } from "../../model/employee";
-
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: "addEdit",
   templateUrl: "./addEdit.component.html",
@@ -20,7 +20,7 @@ export class AddEditComponent implements OnInit {
     idNumber: "",
     gender: ""
   };
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService,private router: Router,) {}
   ngOnInit() {
     this.getPosition(0);
   }
@@ -38,16 +38,19 @@ export class AddEditComponent implements OnInit {
     };
     employee.idNumber = Number(this.paramEmployee.idNumber);
     employee.gender = Number(this.paramEmployee.gender);
-    console.log(employee) 
-
-    // this.employeeService.addEmployees(employee).subscribe(
-    //   rs => {
-    //       console.log(rs)
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    this.employeeService.addEmployees(employee).subscribe(
+      rs => {
+          if(rs){
+            this.router.navigate(["/promise/karyawanindex"]);
+          } 
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  back(){
+    this.router.navigate(["/promise/karyawanindex"]);
   }
   getPosition(param) {
     this.employeeService.getPositionEmployees(param).subscribe(

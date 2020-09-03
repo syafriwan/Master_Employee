@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "../providers/employee.service";
 import { Employee } from "../model/employee";
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: "employee",
   templateUrl: "./employee.component.html",
@@ -24,14 +25,16 @@ export class EmployeeComponent implements OnInit {
     "Desember"
   ];
   modalActive = false;
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService,private router: Router,) {}
 
   ngOnInit() {
     this.getEmployees()
   }
-
   toogleModal() {
     this.modalActive = !this.modalActive;
+  }
+  goAdd(){
+    this.router.navigate(["promise/karyawaneditadd"]);
   }
   modalAction(param){
     console.log(param)
