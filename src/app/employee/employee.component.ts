@@ -61,7 +61,6 @@ export class EmployeeComponent implements OnInit {
     } else {
       this.deleteEmployess(this.paramDelete);
       this.toogleModal();
-      this.getEmployees();
     }
   }
   formatDate(param) {
@@ -99,6 +98,7 @@ export class EmployeeComponent implements OnInit {
       error => {
         console.log(error);
         this.isLoading = false
+        this.getEmployees();
       }
     );
     this.ngOnInit();
