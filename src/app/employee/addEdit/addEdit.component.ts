@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class AddEditComponent implements OnInit {
   isNumberNIP = false;
   isUniqeuNIP = false;
-  isEdit:false;
+  isEdit = false;
   idOnEdit:any;
   positionSelection = [];
   paramEmployee = {
@@ -33,7 +33,7 @@ export class AddEditComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
         this.isEdit = params.edit;
         this.idOnEdit = params.id||0
-        console.log(this.paramEmployee);
+        console.log(params)
       });
     }
   }
