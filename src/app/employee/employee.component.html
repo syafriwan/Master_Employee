@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="container-table">
-				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="goAdd()">Tambah</button>
+				<button style = "margin-bottom:10px" mat-raised-button color="primary" (click)="goAdd()" [disabled]="isLoading">Tambah</button>
 				<table>
 
 					<tr class="tr-header">
@@ -90,24 +90,34 @@
 							</div>
 						</th>
 					</tr>
-
-					<tr class="tr-footer" *ngFor="let item of employees;let i = index;">
-						<td class="footer" style="flex:1">{{i+1}}</td>
-						<td class="footer" style="flex:2">{{item.name}}</td>
-						<td class="footer" style="flex:2">{{item.birthDate}}</td>
-						<td class="footer" style="flex:2">{{item.position.name}}</td>
-						<td class="footer" style="flex:2">{{item.idNumber}}</td>
-						<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
-						<td class='footer-action' style="flex:1">
-							<mat-icon (click)="goEdit(item)">edit</mat-icon>
-							<mat-icon (click)="deleteAction(item)">delete</mat-icon>
-						</td>
-					</tr>
+					<div *ngIf="employees.length >0">
+						<tr class="tr-footer" *ngFor="let item of employees;let i = index;">
+							<td class="footer" style="flex:1">{{i+1}}</td>
+							<td class="footer" style="flex:2">{{item.name}}</td>
+							<td class="footer" style="flex:2">{{item.birthDate}}</td>
+							<td class="footer" style="flex:2">{{item.position.name}}</td>
+							<td class="footer" style="flex:2">{{item.idNumber}}</td>
+							<td class="footer" style="flex:2">{{item.gender == 1?"Pria":"Wanita"}}</td>
+							<td class='footer-action' style="flex:1">
+								<button mat-icon-button color="primary" [disabled]="isLoding">
+              	<mat-icon (click)="goEdit(item)">edit</mat-icon>
+              </button>
+								<button mat-icon-button color="primary"[disabled]="isLoding" >
+              <mat-icon (click)="deleteAction(item)">delete</mat-icon>
+              </button>
+							</td>
+						</tr>
+					</div>
+        
 				</table>
+
 			</div>
 			<div class="container-title-footer">
 			</div>
 		</div>
 
+	</div>
+	<div class="loading" *ngIf="isLoading">
+		<mat-spinner diameter=40></mat-spinner>
 	</div>
 </div>

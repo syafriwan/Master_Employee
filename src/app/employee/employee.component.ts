@@ -26,6 +26,7 @@ export class EmployeeComponent implements OnInit {
   ];
 
   modalActive = false;
+  isLoading = false;
   constructor(
     private employeeService: EmployeeService,
     private router: Router
@@ -72,27 +73,32 @@ export class EmployeeComponent implements OnInit {
     return output;
   }
   getEmployees(param?) {
+    this.isLoading = true
     this.employeeService.getEmployees(param).subscribe(
       rs => {
-        this.employees = rs.content.map(v => {
+        this.employees = rs.data.content.map(v => {
           return { ...v, birthDate: this.formatDate(v.birthDate) };
         });
         this.employees = this.employees.filter(v => {
           return v.isDelete == 0;
         });
+        this.isLoading = false
       },
       error => {
         console.log(error);
+        this.isLoading = false
       }
     );
   }
   deleteEmployess(param) {
+    this.isLoading = true
     this.employeeService.deleteEmployees(param).subscribe(
       rs => {
-        console.log(rs);
+        this.isLoading = false
       },
       error => {
         console.log(error);
+        this.isLoading = false
       }
     );
     this.ngOnInit();
@@ -109,12 +115,6 @@ export class EmployeeComponent implements OnInit {
   deleteAction(param) {
     this.paramDelete = new Employee();
     this.paramDelete.id = param.id;
-    // this.paramDelete.name = param.name;
-    // this.paramDelete.birthDate = param.birthDate;
-    // this.paramDelete.position = param.position;
-    // this.paramDelete.idNumber = param.idNumber;
-    // this.paramDelete.gender = param.gender;
-    // this.paramDelete.isDelete = param.isDelete;
     this.toogleModal();
   }
 }

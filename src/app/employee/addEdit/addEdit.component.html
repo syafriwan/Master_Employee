@@ -70,7 +70,7 @@
 						<div class="right-field">
 							<mat-form-field class="example-form-field">
 								<mat-label>No Induk Pegawai</mat-label>
-								<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
+								<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()" maxlength="8">
 				      </mat-form-field>
 								<div *ngIf="isEdit">
 									<mat-error
@@ -80,7 +80,7 @@
 								</div>
 								<div *ngIf="isEdit">
 									<mat-error
-										*ngIf="!isUniqeuNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipOnEdit">
+										*ngIf="!isUniqeuNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipOnEdit && !isLoading">
 										NIP sudah terpakai
 									</mat-error>
 								</div>
@@ -90,7 +90,7 @@
 									</mat-error>
 								</div>
 								<div *ngIf="!isEdit">
-									<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+									<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber && !isLoading">
 										NIP sudah terpakai
 									</mat-error>
 								</div>
@@ -109,12 +109,12 @@
 					</div>
 					<div class="name-field" style="margin-top:50px">
 						<div class="left-field" style=" justify-content: flex-end;margin:10px">
-							<button  class="button-left" mat-raised-button color="primary" (click)="back()">Kembali</button>
+							<button  class="button-left" mat-raised-button color="primary" (click)="back()" [disabled]="isLoading"embali</button>
 						</div>
 						<div class="right-field" style="margin:10px">
 							<button  class="button-left" mat-raised-button color="primary" (click)="toogleModal()"
-              [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP||!paramEmployee.position.id   ">Simpan</button>
-              
+              [disabled]="!paramEmployee.name  || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP||!paramEmployee.position.id ||isLoading">Simpan</button>
+
 						</div>
 					</div>
 				</div>
@@ -123,5 +123,8 @@
 			</div>
 		</div>
 
+	</div>
+	<div class="loading" *ngIf="isLoading">
+		<mat-spinner diameter=40></mat-spinner>
 	</div>
 </div>

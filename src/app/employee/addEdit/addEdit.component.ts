@@ -24,7 +24,7 @@ export class AddEditComponent implements OnInit {
     gender: ""
   };
   modalActive = false;
-
+  isLoading = false;
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -56,6 +56,13 @@ export class AddEditComponent implements OnInit {
       this.toogleModal();
     }
   }
+  titleCase(str) {
+   let splitStr = str.toLowerCase().split(' ');
+   for (var i = 0; i < splitStr.length; i++) {
+   splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+   }
+   return splitStr.join(' '); 
+ }
   addEditEmployees() {
     const date = new Date(this.paramEmployee.birthDate);
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -63,7 +70,8 @@ export class AddEditComponent implements OnInit {
     const year = date.getFullYear();
     const output = year + "-" + month + "-" + day;
     let employee = new Employee();
-    employee.name = this.paramEmployee.name;
+    
+    employee.name = this.titleCase(this.paramEmployee.name);
     employee.birthDate = output;
     employee.position = {
       id: this.paramEmployee.position.id
@@ -73,26 +81,32 @@ export class AddEditComponent implements OnInit {
     console.log(employee);
     if (this.isEdit) {
       employee.id = this.idOnEdit.toString()
+      this.isLoading = true
       this.employeeService.editEmployees(employee).subscribe(
         rs => {
-          if (rs) {
+          if (rs.status == 200) {
             this.router.navigate(["/promise/karyawanindex"]);
           }
+          this.isLoading = false
         },
         error => {
           console.log(error);
+          this.isLoading = false
         }
       );
     }
     else{
+      this.isLoading = true
        this.employeeService.addEmployees(employee).subscribe(
         rs => {
-          if (rs) {
+        if (rs.status == 200) {
             this.router.navigate(["/promise/karyawanindex"]);
           }
+         this.isLoading = false
         },
         error => {
           console.log(error);
+          this.isLoading = false
         }
       );
     }
@@ -101,21 +115,23 @@ export class AddEditComponent implements OnInit {
     this.router.navigate(["/promise/karyawanindex"]);
   }
   getPosition(param) {
+    this.isLoading = true;
     this.employeeService.getPositionEmployees(param).subscribe(
       rs => {
-        this.positionSelection = rs.positionList;
+        this.positionSelection = rs.data.positionList;
         if (this.isEdit) {
-          this.paramEmployee.name = rs.employee.name;
-          this.paramEmployee.birthDate = rs.employee.birthDate;
-          this.paramEmployee.position.id = rs.employee.position.id.toString();
-          this.paramEmployee.idNumber = rs.employee.idNumber.toString();
-          this.paramEmployee.gender = rs.employee.gender.toString();
-          this.nipOnEdit = rs.employee.idNumber;
-          console.log(this.nipOnEdit)
+          this.paramEmployee.name = rs.data.employee.name;
+          this.paramEmployee.birthDate = rs.data.employee.birthDate;
+          this.paramEmployee.position.id = rs.data.employee.position.id.toString();
+          this.paramEmployee.idNumber = rs.data.employee.idNumber.toString();
+          this.paramEmployee.gender = rs.data.employee.gender.toString();
+          this.nipOnEdit = rs.data.employee.idNumber;
         }
+        this.isLoading = false
       },
       error => {
         console.log(error);
+        this.isLoading = false
       }
     );
   }
@@ -128,14 +144,17 @@ export class AddEditComponent implements OnInit {
       }
     });
     this.isNumberNIP = /^\d*$/.test(this.paramEmployee.idNumber);
+    this.isLoading = true
     this.employeeService.getEmployees().subscribe(
       rs => {
-        this.isUniqeuNIP = rs.content.every(v => {
+        this.isUniqeuNIP = rs.data.content.every(v => {
           return v.idNumber != this.paramEmployee.idNumber;
         });
+        this.isLoading = false
       },
       error => {
         console.log(error);
+        this.isLoading = false
       }
     );
   }
