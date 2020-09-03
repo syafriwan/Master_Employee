@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class AddEditComponent implements OnInit {
   isNumberNIP = true;
-  isUniqeuNIP = true;
+  isUniqueNIP = true;
   isEdit = false;
   idOnEdit: any;
   nipOnEdit: any;
@@ -147,10 +147,12 @@ export class AddEditComponent implements OnInit {
     this.isLoading = true
     this.employeeService.getEmployees().subscribe(
       rs => {
-        this.isUniqeuNIP = rs.data.content.every(v => {
+        this.isUniqueNIP = rs.data.content.every(v => {
           return v.idNumber != this.paramEmployee.idNumber;
         });
         this.isLoading = false
+        // console.log(this.isNumberNIP)
+        console.log(this.isUniqueNIP)
       },
       error => {
         console.log(error);
