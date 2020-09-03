@@ -9,12 +9,12 @@ import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class EmployeeService {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getEmployees(param?): Observable<any> {
-    let url = `http://localhost:8080/employees?sort=${param?param.sortName:""},${param?param.sortType:""}`
+    let url = `http://localhost:8080/employees?sort=${
+      param ? param.sortName : ""
+    },${param ? param.sortType : ""}`;
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -24,13 +24,11 @@ export class EmployeeService {
     });
     let options = { headers: headers };
 
-    return this.http
-      .get(url,options)
-      .pipe(map(this.extractData))
+    return this.http.get(url, options).pipe(map(this.extractData));
   }
   deleteEmployees(body): Observable<any> {
-    console.log(JSON.stringify(body))
-    let url = `http://localhost:8080/employeeDelete`
+    console.log(JSON.stringify(body));
+    let url = `http://localhost:8080/employeeDelete`;
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -42,11 +40,11 @@ export class EmployeeService {
 
     return this.http
       .post(url, JSON.stringify(body), options)
-      .pipe(map(this.extractData))
+      .pipe(map(this.extractData));
   }
   addEmployees(body): Observable<any> {
-    console.log(JSON.stringify(body))
-    let url = `http://localhost:8080/employeeAdd`
+    console.log(JSON.stringify(body));
+    let url = `http://localhost:8080/employeeAdd`;
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -58,11 +56,11 @@ export class EmployeeService {
 
     return this.http
       .post(url, JSON.stringify(body), options)
-      .pipe(map(this.extractData))
+      .pipe(map(this.extractData));
   }
-  getPositionEmployees(body): Observable<any> {
-   
-    let url = `http://localhost:8080/employeePosition/${body}`
+  editEmployees(body): Observable<any> {
+    console.log(JSON.stringify(body));
+    let url = `http://localhost:8080/employeeAdd`;
     let response: any;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -73,8 +71,21 @@ export class EmployeeService {
     let options = { headers: headers };
 
     return this.http
-      .get(url, options)
-      .pipe(map(this.extractData))
+      .put(url, JSON.stringify(body), options)
+      .pipe(map(this.extractData));
+  }
+  getPositionEmployees(body): Observable<any> {
+    let url = `http://localhost:8080/employeePosition/${body}`;
+    let response: any;
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+      // 'X-Requested-Url': url,
+      // 'X-Requested-Method': 'POST',
+      // 'Authorization': Authorization
+    });
+    let options = { headers: headers };
+
+    return this.http.get(url, options).pipe(map(this.extractData));
   }
   private extractData(body: any) {
     return Object.assign(body);

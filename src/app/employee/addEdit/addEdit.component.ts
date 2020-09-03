@@ -10,10 +10,12 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class AddEditComponent implements OnInit {
   isNumberNIP = false;
   isUniqeuNIP = false;
+  editValueNIP = "";
   positionSelection = [];
   paramEmployee = {
+    id:0,
     name: "",
-    birthDate: "2020-10-08",
+    birthDate: "",
     position: {
       id: ""
     },
@@ -29,16 +31,18 @@ export class AddEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.route.queryParams.subscribe(params => {
-      // const date = new Date(params.birthDate);
-      // this.paramEmployee.name = params.name;
-      // this.paramEmployee.birthDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}` ;
-      // this.paramEmployee.position = params.position;
-      // this.paramEmployee.idNumber = params.idNumber;
-      // this.paramEmployee.gender = params.gender;
-      // console.log(this.paramEmployee)
-            console.log(JSON.stringify(params.position.id))
-    });
+    if (this.route.queryParams) {
+      this.route.queryParams.subscribe(params => {
+        this.editValueNIP = params.idNumber;
+        this.paramEmployee.id = Number(params.id);
+        this.paramEmployee.name = params.name;
+        this.paramEmployee.birthDate = params.birthDate;
+        this.paramEmployee.position.id = params.position;
+        this.paramEmployee.idNumber = params.idNumber;
+        this.paramEmployee.gender = params.gender;
+        console.log(this.paramEmployee);
+      });
+    }
   }
   ngOnInit() {
     this.getPosition(0);
@@ -49,23 +53,20 @@ export class AddEditComponent implements OnInit {
     if (param == "no") {
       this.toogleModal();
     } else {
-      this.addEmployees();
+      this.addEditEmployees();
       this.toogleModal();
     }
   }
-  addEmployees() {
+  addEditEmployees() {
     const date = new Date(this.paramEmployee.birthDate);
-    let stringDate =
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+    const output = year + "-" + month + "-" + day;
     let employee = new Employee();
     employee.name = this.paramEmployee.name;
-    employee.birthDate = stringDate;
-    employee.position = {
-      id: Number(this.paramEmployee.position.id),
-      code: "",
-      name: "",
-      isDelete: 0
-    };
+    employee.birthDate = output;
+    employee.position.id = Number(this.paramEmployee.position.id),
     employee.idNumber = Number(this.paramEmployee.idNumber);
     employee.gender = Number(this.paramEmployee.gender);
     this.employeeService.addEmployees(employee).subscribe(
@@ -92,7 +93,6 @@ export class AddEditComponent implements OnInit {
       }
     );
   }
-
   test() {
     const field = document.querySelector('[name="username"]');
     field.addEventListener("keypress", function(event) {

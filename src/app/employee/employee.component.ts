@@ -24,30 +24,47 @@ export class EmployeeComponent implements OnInit {
     "November",
     "Desember"
   ];
+
   modalActive = false;
-  constructor(private employeeService: EmployeeService,private router: Router,) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.getEmployees()
+    this.getEmployees();
   }
   toogleModal() {
     this.modalActive = !this.modalActive;
   }
-  goAdd(){
-    this.router.navigate(["promise/karyawaneditadd"]);
+  goAdd() {
+    this.router.navigate(["promise/karyawaneditadd"],{});
   }
-  goEdit(param){
-    this.router.navigate(["promise/karyawaneditadd"], { queryParams: param });
-    console.log(param)
+  goEdit(param) {
+    const dateObj = new Date(param.birthDate);
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const year = dateObj.getFullYear();
+    const output = year + "-" + month + "-" + day;
+    const paramEmployee = {
+      name: param.name,
+      birthDate: output,
+      position: Number(param.position.id),
+      idNumber: param.idNumber.toString(),
+      gender: param.gender.toString(),
+    };
+    this.router.navigate(["promise/karyawaneditadd"], {
+      queryParams: paramEmployee
+    });
   }
-  modalAction(param){
-    console.log(param)
-    if(param == 'no'){
-      this.toogleModal()
-    }else{
+  modalAction(param) {
+    console.log(param);
+    if (param == "no") {
+      this.toogleModal();
+    } else {
       this.deleteEmployess(this.paramDelete);
-      this.toogleModal()
-      this.getEmployees()
+      this.toogleModal();
+      this.getEmployees();
     }
   }
   formatDate(param) {
@@ -73,7 +90,7 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
- deleteEmployess(param){
+  deleteEmployess(param) {
     this.employeeService.deleteEmployees(param).subscribe(
       rs => {
         console.log(rs);
@@ -82,7 +99,7 @@ export class EmployeeComponent implements OnInit {
         console.log(error);
       }
     );
-  this.ngOnInit()
+    this.ngOnInit();
   }
   sortAction(sortName, sortType) {
     let paramSort = {
@@ -94,7 +111,7 @@ export class EmployeeComponent implements OnInit {
     this.getEmployees(paramSort);
   }
   deleteAction(param) {
-    this.paramDelete = new Employee()
+    this.paramDelete = new Employee();
     this.paramDelete.id = param.id;
     // this.paramDelete.name = param.name;
     // this.paramDelete.birthDate = param.birthDate;

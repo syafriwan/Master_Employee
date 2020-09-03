@@ -32,7 +32,7 @@
 							<mat-form-field class="example-form-field">
 								<mat-label>Nama</mat-label>
 								<input matInput type="text" [(ngModel)]="paramEmployee.name">
-				</mat-form-field>
+				      </mat-form-field>
 						</div>
 					</div>
 					<div class="name-field">
@@ -55,8 +55,8 @@
 						<div class="right-field">
 							<mat-form-field appearance="fill">
 								<mat-label>==Pilih Jabatan==</mat-label>
-								<mat-select [(ngModel)]="paramEmployee.position.id">
-									<mat-option *ngFor="let item of positionSelection" [value]="item.id">
+								<mat-select [(value)]="paramEmployee.position.id">
+									<mat-option *ngFor="let item of positionSelection" [value]="item.id.toString()">
 										{{item.name}}
 									</mat-option>
 								</mat-select>
@@ -71,11 +71,13 @@
 							<mat-form-field class="example-form-field">
 								<mat-label>No Induk Pegawai</mat-label>
 								<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
-				</mat-form-field>
-								<mat-error *ngIf="!isNumberNIP && paramEmployee.idNumber">
+				      </mat-form-field>
+								<mat-error
+									*ngIf="!isNumberNIP && paramEmployee.idNumber && paramEmployee.idNumber != tempNIP">
 									NIP must <strong>Number</strong>
 								</mat-error>
-								<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+								<mat-error
+									*ngIf="!isUniqeuNIP && paramEmployee.idNumber &&paramEmployee.idNumber != editValueNIP">
 									NIP already in use
 								</mat-error>
 						</div>
@@ -97,7 +99,7 @@
 						</div>
 						<div class="right-field" style="margin:10px">
 							<button  class="button-left" mat-raised-button color="primary" (click)="toogleModal()"
-        [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP   ">Simpan</button>
+              [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP   ">Simpan</button>
 						</div>
 					</div>
 				</div>
