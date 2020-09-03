@@ -10,10 +10,10 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class AddEditComponent implements OnInit {
   isNumberNIP = false;
   isUniqeuNIP = false;
-  editValueNIP = "";
+  isEdit:false;
+  idOnEdit:any;
   positionSelection = [];
   paramEmployee = {
-    id:0,
     name: "",
     birthDate: "",
     position: {
@@ -23,9 +23,7 @@ export class AddEditComponent implements OnInit {
     gender: ""
   };
   modalActive = false;
-  toogleModal() {
-    this.modalActive = !this.modalActive;
-  }
+ 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -33,23 +31,23 @@ export class AddEditComponent implements OnInit {
   ) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
-        this.editValueNIP = params.idNumber;
-        this.paramEmployee.id = Number(params.id);
-        this.paramEmployee.name = params.name;
-        this.paramEmployee.birthDate = params.birthDate;
-        this.paramEmployee.position.id = params.position;
-        this.paramEmployee.idNumber = params.idNumber;
-        this.paramEmployee.gender = params.gender;
+        this.isEdit = params.edit;
+        this.idOnEdit = params.id||0
         console.log(this.paramEmployee);
       });
     }
   }
+  toogleModal() {
+    this.modalActive = !this.modalActive;
+  }
   ngOnInit() {
+    if(this.isEdit){
+    this.getPosition(this.idOnEdit);
+    }else{
     this.getPosition(0);
-    // console.log(this.paramEmployee)
+    }
   }
   modalAction(param) {
-    console.log(param);
     if (param == "no") {
       this.toogleModal();
     } else {
@@ -58,27 +56,27 @@ export class AddEditComponent implements OnInit {
     }
   }
   addEditEmployees() {
-    const date = new Date(this.paramEmployee.birthDate);
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const year = date.getFullYear();
-    const output = year + "-" + month + "-" + day;
-    let employee = new Employee();
-    employee.name = this.paramEmployee.name;
-    employee.birthDate = output;
-    employee.position.id = Number(this.paramEmployee.position.id),
-    employee.idNumber = Number(this.paramEmployee.idNumber);
-    employee.gender = Number(this.paramEmployee.gender);
-    this.employeeService.addEmployees(employee).subscribe(
-      rs => {
-        if (rs) {
-          this.router.navigate(["/promise/karyawanindex"]);
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // const date = new Date(this.paramEmployee.birthDate);
+    // const month = String(date.getMonth() + 1).padStart(2, "0");
+    // const day = String(date.getDate()).padStart(2, "0");
+    // const year = date.getFullYear();
+    // const output = year + "-" + month + "-" + day;
+    // let employee = new Employee();
+    // employee.name = this.paramEmployee.name;
+    // employee.birthDate = output;
+    // employee.position.id = Number(this.paramEmployee.position.id),
+    // employee.idNumber = Number(this.paramEmployee.idNumber);
+    // employee.gender = Number(this.paramEmployee.gender);
+    // this.employeeService.addEmployees(employee).subscribe(
+    //   rs => {
+    //     if (rs) {
+    //       this.router.navigate(["/promise/karyawanindex"]);
+    //     }
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   }
   back() {
     this.router.navigate(["/promise/karyawanindex"]);
@@ -87,6 +85,9 @@ export class AddEditComponent implements OnInit {
     this.employeeService.getPositionEmployees(param).subscribe(
       rs => {
         this.positionSelection = rs.positionList;
+        if(this.isEdit){
+          console.log(rs.employee)
+        }
       },
       error => {
         console.log(error);
@@ -102,7 +103,6 @@ export class AddEditComponent implements OnInit {
       }
     });
     this.isNumberNIP = /^\d*$/.test(this.paramEmployee.idNumber);
-    console.log(this.isNumberNIP);
     this.employeeService.getEmployees().subscribe(
       rs => {
         this.isUniqeuNIP = rs.content.every(v => {

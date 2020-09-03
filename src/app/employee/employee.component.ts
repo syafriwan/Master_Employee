@@ -38,27 +38,23 @@ export class EmployeeComponent implements OnInit {
     this.modalActive = !this.modalActive;
   }
   goAdd() {
-    this.router.navigate(["promise/karyawaneditadd"],{});
-  }
-  goEdit(param) {
-    const dateObj = new Date(param.birthDate);
-    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObj.getDate()).padStart(2, "0");
-    const year = dateObj.getFullYear();
-    const output = year + "-" + month + "-" + day;
-    const paramEmployee = {
-      name: param.name,
-      birthDate: output,
-      position: Number(param.position.id),
-      idNumber: param.idNumber.toString(),
-      gender: param.gender.toString(),
+    const param = {
+      edit:false
     };
     this.router.navigate(["promise/karyawaneditadd"], {
-      queryParams: paramEmployee
+      queryParams: param
+    });
+  }
+  goEdit(params) {
+    const param = {
+      edit:true,
+      id:params.id
+    };
+    this.router.navigate(["promise/karyawaneditadd"], {
+      queryParams: param
     });
   }
   modalAction(param) {
-    console.log(param);
     if (param == "no") {
       this.toogleModal();
     } else {

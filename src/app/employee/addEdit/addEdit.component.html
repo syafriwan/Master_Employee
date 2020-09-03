@@ -72,14 +72,30 @@
 								<mat-label>No Induk Pegawai</mat-label>
 								<input matInput type="text" name = "username"[(ngModel)]="paramEmployee.idNumber"(ngModelChange)="test()">
 				      </mat-form-field>
-								<mat-error
-									*ngIf="!isNumberNIP && paramEmployee.idNumber && paramEmployee.idNumber != tempNIP">
-									NIP must <strong>Number</strong>
-								</mat-error>
-								<mat-error
-									*ngIf="!isUniqeuNIP && paramEmployee.idNumber &&paramEmployee.idNumber != editValueNIP">
-									NIP already in use
-								</mat-error>
+								<div *ngIf="isEdit">
+									<mat-error
+										*ngIf="!isNumberNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipEdit">
+										NIP must <strong>Number</strong>
+									</mat-error>
+								</div>
+								<div *ngIf="isEdit">
+									<mat-error
+										*ngIf="!isUniqeuNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipEdit">
+										NIP must <strong>Number</strong>
+									</mat-error>
+								</div>
+								<div *ngIf="!isEdit">
+									<mat-error
+										*ngIf="!isNumberNIP && paramEmployee.idNumber">
+										NIP must <strong>Number</strong>
+									</mat-error>
+								</div>
+								<div *ngIf="!isEdit">
+									<mat-error
+										*ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+										NIP must <strong>Number</strong>
+									</mat-error>
+								</div>
 						</div>
 					</div>
 					<div class="name-field">
