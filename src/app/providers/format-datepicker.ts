@@ -19,7 +19,7 @@ export class AppDateAdapter extends NativeDateAdapter {
     if (displayFormat === 'input') {
       let day: string = date.getDate().toString();
       day = +day < 10 ? '0' + day : day;
-      let month: string = this.monthNames[(date.getMonth() + 1)];
+      let month: string = this.monthNames[(date.getMonth())];
       month = +month < 10 ? '0' + month : month;
       let year = date.getFullYear();
       return `${day}/${month}/${year}`;
