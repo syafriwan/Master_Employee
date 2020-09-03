@@ -104,7 +104,6 @@ export class EmployeeComponent implements OnInit {
        
       }
     );
-    this.ngOnInit();
   }
   sortAction(sortName, sortType) {
     let paramSort = {
