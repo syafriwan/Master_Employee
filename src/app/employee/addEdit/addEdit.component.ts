@@ -12,6 +12,7 @@ export class AddEditComponent implements OnInit {
   isUniqeuNIP = false;
   isEdit = false;
   idOnEdit:any;
+  nipOnEdit:any;
   positionSelection = [];
   paramEmployee = {
     name: "",
@@ -31,8 +32,8 @@ export class AddEditComponent implements OnInit {
   ) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
-        this.isEdit = params.edit;
-        this.idOnEdit = params.id||0
+        params.edit == "true" ?this.isEdit = true:this.isEdit = false
+        this.idOnEdit = Number(params.id)||0
         console.log(params)
       });
     }
@@ -56,17 +57,23 @@ export class AddEditComponent implements OnInit {
     }
   }
   addEditEmployees() {
-    // const date = new Date(this.paramEmployee.birthDate);
-    // const month = String(date.getMonth() + 1).padStart(2, "0");
-    // const day = String(date.getDate()).padStart(2, "0");
-    // const year = date.getFullYear();
-    // const output = year + "-" + month + "-" + day;
-    // let employee = new Employee();
-    // employee.name = this.paramEmployee.name;
-    // employee.birthDate = output;
-    // employee.position.id = Number(this.paramEmployee.position.id),
-    // employee.idNumber = Number(this.paramEmployee.idNumber);
-    // employee.gender = Number(this.paramEmployee.gender);
+    const date = new Date(this.paramEmployee.birthDate);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+    const output = year + "-" + month + "-" + day;
+    let employee = new Employee();
+    employee.name = this.paramEmployee.name;
+    employee.birthDate = output;
+    employee.position = {
+      id:Number(this.paramEmployee.position.id),
+      code:"",
+      name:"",
+      isDelete:"",
+    },
+    employee.idNumber = Number(this.paramEmployee.idNumber);
+    employee.gender = Number(this.paramEmployee.gender);
+    console.log(employee)
     // this.employeeService.addEmployees(employee).subscribe(
     //   rs => {
     //     if (rs) {
@@ -86,7 +93,12 @@ export class AddEditComponent implements OnInit {
       rs => {
         this.positionSelection = rs.positionList;
         if(this.isEdit){
-          console.log(rs.employee)
+          this.paramEmployee.name = rs.employee.name;
+          this.paramEmployee.birthDate = rs.employee.birthDate;
+          this.paramEmployee.position.id = rs.employee.position.id.toString();
+          this.paramEmployee.idNumber = rs.employee.idNumber.toString();
+          this.paramEmployee.gender = rs.employee.gender.toString();
+          this.nipOnEdit = rs.employee.id
         }
       },
       error => {

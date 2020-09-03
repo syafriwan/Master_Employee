@@ -1,14 +1,14 @@
 export class Employee {
-    id: number;
+    id: string;
     name: string;
     birthDate: string;
     position: {
-      id:number,
+      id:string,
       code:string,
       name:string,
-      isDelete:number
+      isDelete:string
     };
-    idNumber:number;
-    gender:number;
-    isDelete:number;
+    idNumber:string;
+    gender:string;
+    isDelete:string;
 }

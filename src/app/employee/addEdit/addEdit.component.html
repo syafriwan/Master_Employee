@@ -18,9 +18,9 @@
 	</div>
 	<div class="container-not-modal">
 		<div style="margin:10px">
-			<h3 style="text-align:center">Master Karyawan</h3>
+			<p style="text-align:center;color:black;font-size:25px">Master Karyawan</p>
 			<div class="container-title-footer">
-				<p>List Karyawan</p>
+				<p>Add Data Karyawan</p>
 			</div>
 			<div class="container-form-flex">
 				<div class="container-form">
@@ -74,26 +74,24 @@
 				      </mat-form-field>
 								<div *ngIf="isEdit">
 									<mat-error
-										*ngIf="!isNumberNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipEdit">
-										NIP must <strong>Number</strong>
+										*ngIf="!isNumberNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipOnEdit">
+										NIP harus berupa angka
 									</mat-error>
 								</div>
 								<div *ngIf="isEdit">
 									<mat-error
-										*ngIf="!isUniqeuNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipEdit">
-										NIP must <strong>Number</strong>
+										*ngIf="!isUniqeuNIP && paramEmployee.idNumber && paramEmployee.idNumber != nipOnEdit">
+										NIP sudah terpakai
 									</mat-error>
 								</div>
 								<div *ngIf="!isEdit">
-									<mat-error
-										*ngIf="!isNumberNIP && paramEmployee.idNumber">
-										NIP must <strong>Number</strong>
+									<mat-error *ngIf="!isNumberNIP && paramEmployee.idNumber">
+										NIP harus berupa angka
 									</mat-error>
 								</div>
 								<div *ngIf="!isEdit">
-									<mat-error
-										*ngIf="!isUniqeuNIP && paramEmployee.idNumber">
-										NIP must <strong>Number</strong>
+									<mat-error *ngIf="!isUniqeuNIP && paramEmployee.idNumber">
+										NIP sudah terpakai
 									</mat-error>
 								</div>
 						</div>
