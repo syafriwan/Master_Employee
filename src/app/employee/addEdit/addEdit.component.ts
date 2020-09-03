@@ -8,8 +8,8 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./addEdit.component.css"]
 })
 export class AddEditComponent implements OnInit {
-  isNumberNIP = false;
-  isUniqeuNIP = false;
+  isNumberNIP = true;
+  isUniqeuNIP = true;
   isEdit = false;
   idOnEdit: any;
   nipOnEdit: any;
@@ -68,11 +68,12 @@ export class AddEditComponent implements OnInit {
     employee.position = {
       id: this.paramEmployee.position.id
     },
-      (employee.idNumber = this.paramEmployee.idNumber);
+    employee.idNumber = this.paramEmployee.idNumber;
     employee.gender = this.paramEmployee.gender;
     console.log(employee);
     if (this.isEdit) {
-      this.employeeService.addEmployees(employee).subscribe(
+      employee.id = this.idOnEdit.toString()
+      this.employeeService.editEmployees(employee).subscribe(
         rs => {
           if (rs) {
             this.router.navigate(["/promise/karyawanindex"]);
@@ -84,7 +85,7 @@ export class AddEditComponent implements OnInit {
       );
     }
     else{
-       this.employeeService.editEmployees(employee).subscribe(
+       this.employeeService.addEmployees(employee).subscribe(
         rs => {
           if (rs) {
             this.router.navigate(["/promise/karyawanindex"]);
@@ -109,7 +110,8 @@ export class AddEditComponent implements OnInit {
           this.paramEmployee.position.id = rs.employee.position.id.toString();
           this.paramEmployee.idNumber = rs.employee.idNumber.toString();
           this.paramEmployee.gender = rs.employee.gender.toString();
-          this.nipOnEdit = rs.employee.id;
+          this.nipOnEdit = rs.employee.idNumber;
+          console.log(this.nipOnEdit)
         }
       },
       error => {

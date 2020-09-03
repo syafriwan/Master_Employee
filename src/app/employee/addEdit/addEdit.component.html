@@ -20,7 +20,7 @@
 		<div style="margin:10px">
 			<p style="text-align:center;color:black;font-size:25px">Master Karyawan</p>
 			<div class="container-title-footer">
-				<p>Add Data Karyawan</p>
+				<p>{{isEdit?'Edit Data Karyawan':'Add Data Karyawan'}}</p>
 			</div>
 			<div class="container-form-flex">
 				<div class="container-form">
@@ -113,7 +113,8 @@
 						</div>
 						<div class="right-field" style="margin:10px">
 							<button  class="button-left" mat-raised-button color="primary" (click)="toogleModal()"
-              [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP   ">Simpan</button>
+              [disabled]="!paramEmployee.name || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP || !isUniqeuNIP||!paramEmployee.position.id   ">Simpan</button>
+              
 						</div>
 					</div>
 				</div>

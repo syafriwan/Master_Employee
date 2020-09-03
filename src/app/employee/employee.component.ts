@@ -68,7 +68,7 @@ export class EmployeeComponent implements OnInit {
     let month = this.monthNames[dateObj.getMonth()];
     let day = String(dateObj.getDate()).padStart(2, "0");
     let year = dateObj.getFullYear();
-    let output = day + "-" + month + "-" + year;
+    let output = day + " " + month + " " + year;
     return output;
   }
   getEmployees(param?) {
