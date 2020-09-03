@@ -75,9 +75,11 @@ export class EmployeeComponent implements OnInit {
     this.isLoading = true
     this.employeeService.getEmployees(param).subscribe(
       rs => {
+        this.employees  = Object.assign(rs.data.content)
         this.employees = rs.data.content.map(v => {
           return { ...v, birthDate: this.formatDate(v.birthDate) };
         });
+      
         this.employees = this.employees.filter(v => {
           return v.isDelete == 0;
         });

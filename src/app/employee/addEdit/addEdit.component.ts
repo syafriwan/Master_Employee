@@ -40,7 +40,6 @@ export class AddEditComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
         params.edit == "true" ? (this.isEdit = true) : (this.isEdit = false);
         this.idOnEdit = Number(params.id) || 0;
-        console.log(params);
       });
     }
   }
@@ -84,7 +83,6 @@ export class AddEditComponent implements OnInit {
     },
     employee.idNumber = this.paramEmployee.idNumber;
     employee.gender = this.paramEmployee.gender;
-    console.log(employee);
     if (this.isEdit) {
       employee.id = this.idOnEdit.toString()
       this.isLoading = true
@@ -158,7 +156,6 @@ export class AddEditComponent implements OnInit {
         });
         this.isLoading = false
         // console.log(this.isNumberNIP)
-        console.log(this.isUniqueNIP)
       },
       error => {
         console.log(error);
