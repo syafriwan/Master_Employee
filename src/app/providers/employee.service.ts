@@ -61,7 +61,7 @@ export class EmployeeService {
       .pipe(map(this.extractData))
   }
   getPositionEmployees(body): Observable<any> {
-    console.log(JSON.stringify(body))
+   
     let url = `http://localhost:8080/employeePosition/${body}`
     let response: any;
     let headers = new HttpHeaders({

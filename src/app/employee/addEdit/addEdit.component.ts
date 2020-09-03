@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "../../providers/employee.service";
 import { Employee } from "../../model/employee";
-interface Food {
-  value: string;
-  viewValue: string;
-}
+
 @Component({
   selector: "addEdit",
   templateUrl: "./addEdit.component.html",
@@ -28,13 +25,20 @@ export class AddEditComponent implements OnInit {
     this.getPosition(0);
   }
   addEmployees() {
+    const date  = new Date(this.paramEmployee.birthDate);
+    let stringDate = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
     let employee = new Employee();
     employee.name = this.paramEmployee.name;
-    employee.birthDate = new Date(this.paramEmployee.birthDate);
-    employee.position = Number(this.paramEmployee.position.id);
+    employee.birthDate = stringDate;
+    employee.position = {
+      id: Number(this.paramEmployee.position.id),
+      code: "",
+      name: "",
+      isDelete: 0
+    };
     employee.idNumber = Number(this.paramEmployee.idNumber);
     employee.gender = Number(this.paramEmployee.gender);
-    console.log(employee);
+    console.log(employee) 
 
     // this.employeeService.addEmployees(employee).subscribe(
     //   rs => {
@@ -59,7 +63,7 @@ export class AddEditComponent implements OnInit {
   test() {
     const field = document.querySelector('[name="username"]');
     field.addEventListener("keypress", function(event) {
-    const key = event.keyCode;
+      const key = event.keyCode;
       if (key === 32) {
         event.preventDefault();
       }

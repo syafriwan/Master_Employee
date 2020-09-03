@@ -1,7 +1,7 @@
 export class Employee {
     id: number;
     name: string;
-    birthDate: Date;
+    birthDate: string;
     position: {
       id:number,
       code:string,
