@@ -41,11 +41,11 @@
 						</div>
 						<div class="right-field">
 							<mat-form-field color="accent" appearance="fill">
-								<mat-label>ex:03/August/1994</mat-label>
+								<mat-label>Tanggal Lahir</mat-label>
 								<input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate"  [(ngModel)]="paramEmployee.birthDate" 
-               >
+               disabled>
 								<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-								<mat-datepicker #picker1 ></mat-datepicker>
+								<mat-datepicker #picker1 disabled="false" ></mat-datepicker>
                 
 							</mat-form-field>
 						</div>
