@@ -36,6 +36,9 @@ tr:nth-child(even) {
 .tr-header{
  display:flex;
  flex-direction: row;
+ position: sticky;
+ top: 0;
+ z-index: 1
 }
 .header{
  display:flex;
