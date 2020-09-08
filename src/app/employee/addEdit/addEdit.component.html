@@ -42,9 +42,11 @@
 						<div class="right-field">
 							<mat-form-field color="accent" appearance="fill">
 								<mat-label>ex:03/August/1994</mat-label>
-								<input matInput [matDatepicker]="picker1" [(ngModel)]="paramEmployee.birthDate" >
+								<input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate"  [(ngModel)]="paramEmployee.birthDate" 
+               >
 								<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-								<mat-datepicker #picker1></mat-datepicker>
+								<mat-datepicker #picker1 ></mat-datepicker>
+                
 							</mat-form-field>
 						</div>
 					</div>
@@ -113,7 +115,7 @@
 						</div>
 						<div class="right-field" style="margin:10px">
 							<button  class="button-left" mat-raised-button color="primary" (click)="toogleModal()"
-              [disabled]="!paramEmployee.name  || !paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP ||!paramEmployee.position.id || isLoading ||(paramEmployee.idNumber != nipOnEdit && !isUniqueNIP)">Simpan</button>
+              [disabled]="!paramEmployee.name ||!paramEmployee.birthDate || !paramEmployee.idNumber||!paramEmployee.gender || !isNumberNIP ||!paramEmployee.position.id || isLoading ||(paramEmployee.idNumber != nipOnEdit && !isUniqueNIP)">Simpan</button>
 
 						</div>
 					</div>

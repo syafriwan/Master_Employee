@@ -31,6 +31,8 @@ export class AddEditComponent implements OnInit {
   };
   modalActive = false;
   isLoading = false;
+  minDate: Date;
+  maxDate: Date;
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -42,6 +44,9 @@ export class AddEditComponent implements OnInit {
         this.idOnEdit = Number(params.id) || 0;
       });
     }
+     const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 100, 0, 1);
+    this.maxDate = new Date();
   }
   toogleModal() {
     this.modalActive = !this.modalActive;
@@ -122,7 +127,9 @@ export class AddEditComponent implements OnInit {
     this.isLoading = true;
     this.employeeService.getPositionEmployees(param).subscribe(
       rs => {
-        this.positionSelection = rs.data.positionList;
+        this.positionSelection = rs.data.positionList.filter(v=>{
+          return v.isDelete == 0;
+        });
         if (this.isEdit) {
           this.paramEmployee.name = rs.data.employee.name;
           this.paramEmployee.birthDate = rs.data.employee.birthDate;
@@ -162,5 +169,8 @@ export class AddEditComponent implements OnInit {
         this.isLoading = false
       }
     );
+  }
+  checkDate(){
+    console.log('hai')
   }
 }

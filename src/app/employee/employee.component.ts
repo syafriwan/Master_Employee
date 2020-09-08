@@ -79,7 +79,7 @@ export class EmployeeComponent implements OnInit {
         this.employees = rs.data.content.map(v => {
           return { ...v, birthDate: this.formatDate(v.birthDate) };
         });
-      
+        // console.log(this.employees)
         this.employees = this.employees.filter(v => {
           return v.isDelete == 0;
         });
