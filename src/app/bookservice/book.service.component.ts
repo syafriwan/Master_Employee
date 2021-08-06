@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'book.service',
@@ -6,5 +6,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./book.service.component.scss']
 })
 export class BookServiceComponent implements OnInit {
-  ngOnInit() {}
+  public innerWidth: any;
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
+  getHeight(){
+    console.log(this.innerWidth)
+    return this.innerWidth
+  }
 }
