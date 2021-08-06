@@ -62,6 +62,6 @@ export class BookServiceComponent implements OnInit {
   }
   getHeight() {
     console.log(this.innerHeight);
-    return this.innerHeight - 100;
+    return this.innerHeight - 150;
   }
 }
