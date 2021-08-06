@@ -31,7 +31,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      padding: 15px;
+      padding: 10px;
       .address-title {
         display: flex;
         flex-direction: column;
@@ -45,11 +45,12 @@
           display: flex;
           flex-direction: row;
           align-items: center;
+
           p {
-            font-size: 12px;
+            font-size: 15px;
             color: #776f6f;
             padding-left: 5px;
-            font-weight: bold;
+            font-weight: 2;
           }
           mat-icon {
             color: #776f6f;
