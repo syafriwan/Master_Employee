@@ -49,7 +49,7 @@ export const MY_FORMATS = {
   ]
 })
 export class BookServiceComponent implements OnInit {
-  public innerWidth: any;
+  public innerHeight: any;
   private exportTime = { hour: 9, minute: 0, meriden: 'AM', format: 24 };
   selectedCategory: string = 'US';
   selectedType: string = 'US';
@@ -58,9 +58,9 @@ export class BookServiceComponent implements OnInit {
     console.log('event', event);
   }
   ngOnInit() {
-    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
   }
   getHeight() {
-    return this.innerWidth + 40;
+    return this.innerHeight;
   }
 }
