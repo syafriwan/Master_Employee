@@ -48,12 +48,13 @@
 
       <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]=" picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
+      <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime"
+        style="padding:0">
       </material-timepicker>
 
     </div>
