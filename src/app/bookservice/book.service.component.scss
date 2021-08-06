@@ -98,12 +98,15 @@
         display: flex;
         align-items: center;
         flex: 1;
+        justify-content: flex-end;
       }
     }
     .container-form {
-      @include card(200px);
+      @include card(300px);
+      display: flex;
       flex-direction: column;
       width: 100%;
+      padding: 5px;
     }
   }
   .container-submit {

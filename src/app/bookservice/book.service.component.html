@@ -30,20 +30,32 @@
       </div>
     </div>
     <div class="container-form">
-      <div style="border:1px solid red">
-        <mat-form-field appearance="fill">
-          <mat-label>==Pilih Jabatan==</mat-label>
-          <mat-select [(value)]="paramEmployee.position.id">
-            <mat-option *ngFor="let item of positionSelection" [value]="item.id.toString()">
-              {{item.name}}
-            </mat-option>
+        <mat-form-field>
+          <mat-select name="selectedCategory" [(value)]="selectedCategory" placeholder="Service Category">
+            <mat-option [value]="'GB'">Great Britain</mat-option>
+            <mat-option [value]="'US'">United States</mat-option>
+            <mat-option [value]="'CA'">Canada</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-      <!-- <div style="border:1px solid red">
+
+        <mat-form-field>
+          <mat-select name="selectedType" [(value)]="selectedType" placeholder="Service Type">
+            <mat-option [value]="'GB'">Great Britain</mat-option>
+            <mat-option [value]="'US'">United States</mat-option>
+            <mat-option [value]="'CA'">Canada</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
         <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
         </material-timepicker>
-      </div> -->
+     
     </div>
   </div>
   <div class="container-submit">
