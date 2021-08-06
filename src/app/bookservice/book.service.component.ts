@@ -10,7 +10,7 @@ export class BookServiceComponent implements OnInit {
   ngOnInit() {
     this.innerWidth = window.innerWidth;
   }
-  getHeight(){
-    return this.innerWidth - 50
+  getHeight() {
+    return this.innerWidth + 60;
   }
 }
