@@ -7,6 +7,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class BookServiceComponent implements OnInit {
   public innerWidth: any;
+  private exportTime = { hour: 9, minute: 0, meriden: 'AM', format: 24 };
+  onChangeHour(event: any) {
+    console.log('event', event);
+  }
   ngOnInit() {
     this.innerWidth = window.innerWidth;
   }

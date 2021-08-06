@@ -7,7 +7,7 @@ import { AppRoutingModule, rc } from "./app.routing";
 import { DemoMaterialModule } from "./material-module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-
+import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 // import {DialogComponent} from './helpers/dialog/dialog.component'
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MaterialTimePickerModule
   ],
   declarations: [AppComponent,rc],
   bootstrap: [AppComponent],
