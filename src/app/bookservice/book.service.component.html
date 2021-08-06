@@ -30,8 +30,17 @@
       </div>
     </div>
     <div class="container-form">
-      <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
-      </material-timepicker>
+      <div style="border:1px solid red">
+        <mat-form-field appearance="outline">
+          <mat-label>Favorite animal</mat-label>
+          <mat-select [formControl]="animalControl" required>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div style="border:1px solid red">
+        <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
+        </material-timepicker>
+      </div>
     </div>
   </div>
   <div class="container-submit">
