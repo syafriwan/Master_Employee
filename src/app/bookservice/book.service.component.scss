@@ -2,7 +2,7 @@
   height: $height;
   box-shadow: 0px 5px 2px #f0f0f0;
   width: 100%;
-  border:15px
+  border: 15px;
 }
 .container-header {
   display: flex;
@@ -20,14 +20,13 @@
 .container-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  border:1px solid red;
+  justify-content: flex-start;
+  padding: 30px;
   .container-description {
+    //height sudah ditentukan di html sesuai height screen
     display: flex;
     flex-direction: column;
-    flex: 1;
-    
+    border: 1px solid red;
     .container-address {
       @include card(70px);
       display: flex;
@@ -40,7 +39,7 @@
         justify-content: center;
         p {
           font-weight: bold;
-          font-size: 16px;
+          font-size: 15px;
           padding-left: 5px;
         }
         .content {
@@ -55,11 +54,12 @@
           }
           mat-icon {
             color: #807f7f;
-            font-size: 20px
+            font-size: 20px;
           }
         }
       }
     }
+
     .container-car {
       @include card(70px);
       display: flex;
@@ -84,14 +84,12 @@
             font-size: 15px;
             padding-left: 5px;
             font-weight: bold;
-            margin: 0;
           }
           .content {
-            font-size: 15px;
+            font-size: 12px;
             color: #807f7f;
             padding-left: 5px;
             font-weight: 2;
-            margin: 0;
           }
         }
       }
@@ -103,7 +101,7 @@
       }
     }
     .container-form {
-      @include card(300px);
+      @include card(220px);
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -113,6 +111,6 @@
   .container-submit {
     box-shadow: 0px 3px 3px #f0f0f0;
     height: 100px;
-    border:1px solid red
+    border: 1px solid red;
   }
 }
