@@ -8,13 +8,9 @@ mat-icon {
   color: #807f7f;
   font-size: 20px;
 }
-:host ::ng-deep .mat-select-arrow {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid;
-  margin: 0 4px;
+:host ::ng-deep .mat-icon {
+  font-size: 20px;
+  line-height: 1.125;
 }
 .container-header {
   display: flex;
