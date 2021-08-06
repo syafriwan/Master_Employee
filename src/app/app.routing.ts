@@ -3,6 +3,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { EmployeeComponent } from "./employee/employee.component";
+import { BookServiceComponent } from "./bookservice/book.service.component";
 import { AddEditComponent } from "./employee/addEdit/addEdit.component";
 // Routes
 const routes: Routes = [
@@ -19,7 +20,11 @@ const routes: Routes = [
     path: "promise/karyawaneditadd",
     component: AddEditComponent
   },
-  { path: "**", redirectTo: "promise/karyawanindex" }
+  {
+    path: "book/service",
+    component: BookServiceComponent
+  },
+  { path: "**", redirectTo: "book/service" }
 ];
 
 @NgModule({
@@ -28,4 +33,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const rc = [EmployeeComponent, AddEditComponent];
+export const rc = [EmployeeComponent, AddEditComponent, BookServiceComponent];
