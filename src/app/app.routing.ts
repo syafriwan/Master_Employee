@@ -9,7 +9,7 @@ import { AddEditComponent } from './employee/addEdit/addEdit.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'promise/karyawaneditadd',
+    redirectTo: 'book/service',
     pathMatch: 'full'
   },
   {
