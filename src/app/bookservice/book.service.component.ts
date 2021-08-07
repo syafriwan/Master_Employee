@@ -58,6 +58,7 @@ export class BookServiceComponent implements OnInit {
     { id: 2, category: 1, name: '1000km', price: 2100000 },
     { id: 3, category: 2, name: 'AC', price: 500000 }
   ];
+  typeFiltered: any;
   date = new FormControl(moment());
   price = 0;
   onChangeHour(event: any) {
@@ -70,10 +71,8 @@ export class BookServiceComponent implements OnInit {
     return this.innerHeight - 150;
   }
   changeType(id: any) {
-    let type = this.type.filter(val => {
+    this.typeFiltered = this.type.filter(val => {
       return val.category == id;
     });
-
-    console.log(type);
   }
 }

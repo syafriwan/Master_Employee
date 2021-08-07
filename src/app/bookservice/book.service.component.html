@@ -41,7 +41,7 @@
 
       <mat-form-field style="margin-bottom: -0.5em">
         <mat-select name="selectedType" [(value)]="selectedType" placeholder="Service Type">
-          <mat-option *ngFor="let item of type" [value]="item.id.toString()">
+          <mat-option *ngFor="let item of typeFiltered" [value]="item.id.toString()">
             {{item.name}}
           </mat-option>
         </mat-select>
