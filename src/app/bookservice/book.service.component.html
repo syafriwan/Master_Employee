@@ -31,18 +31,18 @@
     </div>
     <div class="container-form">
       <mat-form-field style="margin-bottom: -0.5em">
-        <mat-select name="selectedCategory" [(value)]="selectedCategory" placeholder="Service Category">
-          <mat-option [value]="'GB'">Great Britain</mat-option>
-          <mat-option [value]="'US'">United States</mat-option>
-          <mat-option [value]="'CA'">Canada</mat-option>
+        <mat-select name="selectedCategory" [(value)]="selectedCategory" placeholder="Service Category"
+        (selectionChange)="changeType($event.value)">
+          <mat-option [value]="'1'">Maintenance</mat-option>
+          <mat-option [value]="'2'">Repair</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field style="margin-bottom: -0.5em">
         <mat-select name="selectedType" [(value)]="selectedType" placeholder="Service Type">
-          <mat-option [value]="'GB'">Great Britain</mat-option>
-          <mat-option [value]="'US'">United States</mat-option>
-          <mat-option [value]="'CA'">Canada</mat-option>
+          <mat-option *ngFor="let item of positionSelection" [value]="item.id.toString()">
+            {{item.name}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 

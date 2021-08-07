@@ -50,8 +50,12 @@ export const MY_FORMATS = {
 export class BookServiceComponent implements OnInit {
   public innerHeight: any;
   private exportTime = { hour: 9, minute: 0, meriden: 'AM', format: 24 };
-  selectedCategory: string = 'US';
-  selectedType: string = 'US';
+  selectedCategory: string = '1';
+  selectedType: string = '1';
+  category = [
+    { name: 'Maintenance', type: [{ name: '1000km' }, { name: '5000km' }] },
+    { name: 'Repair', type: [{ name: 'AC' }] }
+  ];
   date = new FormControl(moment());
   price = 0;
   onChangeHour(event: any) {
@@ -61,7 +65,6 @@ export class BookServiceComponent implements OnInit {
     this.innerHeight = window.innerHeight;
   }
   getHeight() {
-    console.log(this.innerHeight);
     return this.innerHeight - 150;
   }
 }
