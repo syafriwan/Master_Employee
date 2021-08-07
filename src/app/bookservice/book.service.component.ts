@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { FormControl } from '@angular/forms';
 import {
@@ -61,6 +61,11 @@ export class BookServiceComponent implements OnInit {
   typeFiltered: any;
   date = new FormControl(moment());
   price = 0;
+  formControlItem: FormControl = new FormControl("");
+  required: boolean = !1;
+
+  @ViewChild("timepicker") timepicker: any;
+
   onChangeHour(event: any) {
     console.log('event', event);
   }
@@ -90,5 +95,10 @@ export class BookServiceComponent implements OnInit {
     this.price = this.type.filter(val => {
       return val.id == id;
     })[0].price;
+  }
+  openFromIcon(timepicker: { open: () => void }) {
+    if (!this.formControlItem.disabled) {
+      timepicker.open();
+    }
   }
 }
