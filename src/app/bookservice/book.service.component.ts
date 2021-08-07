@@ -53,9 +53,14 @@ export class BookServiceComponent implements OnInit {
   selectedCategory: string = '1';
   selectedType: string = '1';
   category = [
-    {id: 1, name: 'Maintenance', type: [{id: 1, name: '1000km' }, {id: 2, name: '5000km' }] },
-    {id: 2, name: 'Repair', type: [{id: 1, name: 'AC' }] }
+    {
+      id: 1,
+      name: 'Maintenance',
+      type: [{ id: 1, name: '1000km' }, { id: 2, name: '5000km' }]
+    },
+    { id: 2, name: 'Repair', type: [{ id: 1, name: 'AC' }] }
   ];
+  type = [];
   date = new FormControl(moment());
   price = 0;
   onChangeHour(event: any) {
@@ -66,5 +71,11 @@ export class BookServiceComponent implements OnInit {
   }
   getHeight() {
     return this.innerHeight - 150;
+  }
+  changeType(idCategory: any) {
+    let category = this.category.filter(v => {
+      return (v.id = idCategory);
+    });
+    console.log(category);
   }
 }
