@@ -69,13 +69,21 @@ export class BookServiceComponent implements OnInit {
     this.typeFiltered = this.type.filter(val => {
       return val.category.toString() == this.selectedCategory;
     });
+    this.price = this.type.filter(val => {
+      return val.id.toString() == this.selectedType;
+    })[0].price;
   }
   getHeight() {
     return this.innerHeight - 150;
   }
-  changeType(id: any) {
+  changeCategory(id: any) {
     this.typeFiltered = this.type.filter(val => {
       return val.category == id;
     });
+  }
+  changeType(id: any) {
+    this.price = this.type.filter(val => {
+      return val.id == id;
+    })[0].price;
   }
 }

@@ -32,7 +32,7 @@
     <div class="container-form">
       <mat-form-field style="margin-bottom: -0.5em">
         <mat-select name="selectedCategory" [(value)]="selectedCategory" placeholder="Service Category"
-          (selectionChange)="changeType($event.value)">
+          (selectionChange)="changeCategory($event.value)">
           <mat-option *ngFor="let item of category" [value]="item.id.toString()">
             {{item.name}}
           </mat-option>
@@ -40,7 +40,8 @@
       </mat-form-field>
 
       <mat-form-field style="margin-bottom: -0.5em">
-        <mat-select name="selectedType" [(value)]="selectedType" placeholder="Service Type">
+        <mat-select name="selectedType" [(value)]="selectedType" placeholder="Service Type"
+          (selectionChange)="changeType($event.value)">
           <mat-option *ngFor="let item of typeFiltered" [value]="item.id.toString()">
             {{item.name}}
           </mat-option>
