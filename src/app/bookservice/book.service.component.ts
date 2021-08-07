@@ -53,8 +53,8 @@ export class BookServiceComponent implements OnInit {
   selectedCategory: string = '1';
   selectedType: string = '1';
   category = [
-    { name: 'Maintenance', type: [{ name: '1000km' }, { name: '5000km' }] },
-    { name: 'Repair', type: [{ name: 'AC' }] }
+    {id: 1, name: 'Maintenance', type: [{id: 1, name: '1000km' }, {id: 2, name: '5000km' }] },
+    {id: 2, name: 'Repair', type: [{id: 1, name: 'AC' }] }
   ];
   date = new FormControl(moment());
   price = 0;
