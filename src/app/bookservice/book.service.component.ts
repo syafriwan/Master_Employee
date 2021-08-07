@@ -51,7 +51,7 @@ export class BookServiceComponent implements OnInit {
   public innerHeight: any;
   private exportTime = { hour: 9, minute: 0, meriden: 'AM', format: 24 };
   selectedCategory = '';
-  selectedType = '1';
+  selectedType = '';
   category = [{ id: 1, name: 'Maintenance' }, { id: 2, name: 'Repair' }];
   type = [
     { id: 1, category: 1, name: '5000km', price: 2000000 },
@@ -66,12 +66,17 @@ export class BookServiceComponent implements OnInit {
   }
   ngOnInit() {
     this.innerHeight = window.innerHeight;
-    this.typeFiltered = this.type.filter(val => {
-      return val.category.toString() == this.selectedCategory;
-    });
-    this.price = this.type.filter(val => {
-      return val.id.toString() == this.selectedType;
-    })[0].price;
+    if (this.selectedCategory != '') {
+      this.typeFiltered = this.type.filter(val => {
+        return val.category.toString() == this.selectedCategory;
+      });
+    }
+
+    if (this.selectedType != '') {
+      this.price = this.type.filter(val => {
+        return val.id.toString() == this.selectedType;
+      })[0].price;
+    }
   }
   getHeight() {
     return this.innerHeight - 150;
