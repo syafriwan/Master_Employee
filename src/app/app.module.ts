@@ -8,10 +8,7 @@ import { DemoMaterialModule } from './material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 // import {DialogComponent} from './helpers/dialog/dialog.component'
-import { LOCALE_ID } from '@angular/core';
-const lang = 'en-US';
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,12 +19,11 @@ const lang = 'en-US';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MaterialTimePickerModule,
-    NgxMatTimepickerModule.setLocale(lang)
+    MaterialTimePickerModule
   ],
   declarations: [AppComponent, rc],
   bootstrap: [AppComponent],
   entryComponents: [],
-  providers: [{ provide: LOCALE_ID, useValue: lang }]
+  providers: []
 })
 export class AppModule {}

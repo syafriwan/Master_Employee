@@ -27,7 +27,6 @@
     "angular-in-memory-web-api": "0.11.0",
     "lodash": "^4.17.21",
     "moment": "2.29.1",
-    "ngx-mat-timepicker": "12.0.0",
     "rxjs": "6.6.7",
     "tslib": "1.14.1",
     "zone.js": "0.10.3"
