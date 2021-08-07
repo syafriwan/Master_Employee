@@ -49,13 +49,13 @@
       </mat-form-field>
 
       <mat-form-field style="margin-bottom: -1.25em">
-        <input matInput [matDatepicker]="dp" placeholder="Service Date" [formControl]="date">
+        <input matInput [matDatepicker]="dp" placeholder="Service Date" >
         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp></mat-datepicker>
       </mat-form-field>
 
-      <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
-      </material-timepicker>
+      <!-- <material-timepicker color="primary" label="Service Time" appearance="standard" [userTime]="exportTime">
+      </material-timepicker> -->
 
     </div>
   </div>

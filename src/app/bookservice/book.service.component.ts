@@ -50,8 +50,8 @@ export const MY_FORMATS = {
 export class BookServiceComponent implements OnInit {
   public innerHeight: any;
   private exportTime = { hour: 9, minute: 0, meriden: 'AM', format: 24 };
-  selectedCategory: string = '1';
-  selectedType: string = '1';
+  selectedCategory = '';
+  selectedType = '';
   category = [{ id: 1, name: 'Maintenance' }, { id: 2, name: 'Repair' }];
   type = [
     { id: 1, category: 1, name: '5000km', price: 2000000 },
