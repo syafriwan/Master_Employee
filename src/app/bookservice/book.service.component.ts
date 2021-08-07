@@ -66,12 +66,14 @@ export class BookServiceComponent implements OnInit {
   }
   ngOnInit() {
     this.innerHeight = window.innerHeight;
+    this.typeFiltered = this.type.filter(val => {
+      return val.category.toString() == this.selectedCategory;
+    });
   }
   getHeight() {
     return this.innerHeight - 150;
   }
   changeType(id: any) {
-    this.typeFiltered = [];
     this.typeFiltered = this.type.filter(val => {
       return val.category == id;
     });
