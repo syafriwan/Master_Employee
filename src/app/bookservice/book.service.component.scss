@@ -123,7 +123,6 @@
     flex: 1;
     padding: 10px;
     margin-top: 15px;
-    max-width: 250px;
     .estimate {
       @include card(100px);
       display: flex;
@@ -151,13 +150,12 @@
       color: white;
     }
   }
-
-  @media only screen and (min-width: 600px) {
-    .container-body {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding: 20px;
-    }
+}
+@media only screen and (min-width: 700px) {
+  .container-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
   }
 }
