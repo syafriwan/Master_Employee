@@ -54,6 +54,7 @@ export class BookServiceComponent implements OnInit {
   selectedCategory: string = 'US';
   selectedType: string = 'US';
   date = new FormControl(moment());
+  price = 0;
   onChangeHour(event: any) {
     console.log('event', event);
   }
