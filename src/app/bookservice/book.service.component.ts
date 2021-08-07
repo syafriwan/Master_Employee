@@ -73,9 +73,9 @@ export class BookServiceComponent implements OnInit {
     return this.innerHeight - 150;
   }
   changeType(idCategory: any) {
-    let category = this.category.filter(v => {
-      return (v.id = idCategory);
+    let res = this.category.filter(val => {
+      return (val.id = idCategory);
     });
-    console.log(category);
+    console.log(res);
   }
 }
