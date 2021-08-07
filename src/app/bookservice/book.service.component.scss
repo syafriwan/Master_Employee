@@ -28,7 +28,8 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    min-width: 40%;
+    width: 40%;
+    max-width: 40%;
     .container-address {
       @include card(70px);
       display: flex;
@@ -125,7 +126,8 @@
     flex: 1;
     padding: 10px;
     margin-top: 15px;
-    min-width: 40%;
+    width: 40%;
+    max-width: 40%;
     .estimate {
       @include card(100px);
       display: flex;
@@ -133,6 +135,8 @@
       p {
         font-weight: bold;
         font-size: 13px;
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
     .button {
@@ -160,5 +164,22 @@
     flex-direction: column;
     justify-content: center;
     padding: 20px;
+    .container-description {
+      //height sudah ditentukan di html sesuai height screen
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+    }
+    .container-submit {
+      box-shadow: 0px 3px 3px #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 10px;
+      margin-top: 15px;
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
